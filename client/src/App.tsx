@@ -1,11 +1,11 @@
-
+import LandingPage from "./common/LandingPage";
 
 const App = () => {
   return (
     <div>
-      <h1 className="underline text-4xl ">Bismillah</h1>
+      <LandingPage />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

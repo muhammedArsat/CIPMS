@@ -1,1 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap");
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --font-primary: "Inter";
+  --font-secondary: "Lexend";
+}
+
+
+
+body.dark {
+  background-color: #181818 !important;
+}
+
+h1 {
+  @apply text-[2rem] md:text-[3rem] font-primary font-semibold tracking-tight leading-[40px] md:leading-[60px];
+}
+h2 {
+  @apply text-[1.5rem] md:text-[2rem] font-primary font-normal tracking-normal;
+}
+h3 {
+  @apply text-[1.1rem] md:text-[1.3rem] font-secondary font-light tracking-wider;
+}
+h4{
+    @apply text-[1rem] font-secondary font-normal tracking-wide
+}
+p {
+  @apply text-[1rem] font-secondary font-light tracking-wide;
+}
