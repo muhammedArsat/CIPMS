@@ -13,12 +13,23 @@ datasource db {
   provider = "postgresql"
   url      =env("DATABASE_URL")
 }
+enum Role{
+    student
+    mentor
+    placementOfficer
+}
+enum ApplicationStatus{
+    pending
+    approved
+    rejected
+    completed
+}
 model Users{
     id       Int    @id       @default(autoincrement())
     name     String
     email     String @unique
     password  String
-    role      String
+    role      Role
     createdAt DateTime      @default(now())
 
     studentProfile StudentProfiles?
@@ -69,7 +80,7 @@ model Applications{
     id             Int   @id  @default(autoincrement())
     userId         Int
     internshipId   Int
-    status         String @default("pending")
+    status         ApplicationStatus @default("pending")
     feedback       String?
     appliedAt      DateTime @default(now())
     updatedAt      DateTime @updatedAt
