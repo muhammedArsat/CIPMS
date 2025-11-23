@@ -48,7 +48,7 @@ model MentorProfiles{
     department      String?
 
     user Users     @relation(fields:[userId],references:[id])
-    students StudentProfiles[]
+    mentees  StudentProfiles[]
 }
 model Internships{
     id            Int @id @default(autoincrement())
@@ -83,6 +83,6 @@ model SavedInternships{
     internshipId       Int
     savedAt            DateTime @default(now())
 
-    user       Users @relation(fields:[userId],references[id])
+    user       Users @relation(fields:[userId],references:[id])
     internship Internships @relation(fields:[internshipId],references:[id])
 }
