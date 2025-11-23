@@ -12,7 +12,7 @@ const HowItWorkCard = ({
   number: string;
 }) => {
   return (
-    <div className="md:min-w-sm h-[200px] bg-white shadow-xl flex justify-center items-center flex-col border border-neutral-300 p-2">
+    <div className="md:min-w-sm h-[200px] hover:scale-105 transition duration-300 bg-white shadow-xl flex justify-center items-center flex-col border border-neutral-300 p-2">
       <div className="flex justify-center items-center relative">
         <span className="border rounded-full p-3 relative">
           {image}

@@ -8,16 +8,16 @@ const LandingFooter = () => {
         <h4 className="font-semibold">Empowering Technical Education</h4>
 
         <div className="flex space-x-6 mt-2">
-          <a href="/student-portal" className="text-blue-500 hover:underline">
+          <a href="/student-portal" className="text-action hover:underline">
             Student Portal
           </a>
-          <a href="/faculty-login" className="text-blue-500 hover:underline">
+          <a href="/faculty-login" className="text-action hover:underline">
             Faculty Login
           </a>
-          <a href="/admin-dashboard" className="text-blue-500 hover:underline">
+          <a href="/admin-dashboard" className="text-action hover:underline">
             Admin Dashboard
           </a>
-          <a href="/support" className="text-blue-500 hover:underline">
+          <a href="/support" className="text-action hover:underline">
             Support
           </a>
         </div>
