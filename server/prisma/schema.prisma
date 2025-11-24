@@ -11,18 +11,18 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      =env("DATABASE_URL")
+  
 }
 enum Role{
-    student
-    mentor
-    placementOfficer
+    STUDENT
+    MENTOR
+    PLACEMENTOFFICER
 }
 enum ApplicationStatus{
-    pending
-    approved
-    rejected
-    completed
+    PENDING
+    APPROVED
+    REJECTED
+    COMPLETED
 }
 model Users{
     id       Int    @id       @default(autoincrement())
@@ -44,7 +44,7 @@ model StudentProfiles{
     rollNo       String?
     department   String?
     cgpa         Float?
-    skills       String[]?
+    skills       String[]
     introduction String?
     profileUrl    String?
     mentorId     Int?
@@ -65,8 +65,8 @@ model Internships{
     id            Int @id @default(autoincrement())
     title         String
     description   String?
-    tags          String[]?
-    skills        String[]?
+    tags          String[]
+    skills        String[]
     cutoff        Float?
     ctc           Float?
     duration      String?
@@ -80,7 +80,7 @@ model Applications{
     id             Int   @id  @default(autoincrement())
     userId         Int
     internshipId   Int
-    status         ApplicationStatus @default("pending")
+    status         ApplicationStatus @default("PENDING")
     feedback       String?
     appliedAt      DateTime @default(now())
     updatedAt      DateTime @updatedAt
