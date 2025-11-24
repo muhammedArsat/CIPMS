@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  
+
 }
 enum Role{
     STUDENT
@@ -80,7 +80,7 @@ model Applications{
     id             Int   @id  @default(autoincrement())
     userId         Int
     internshipId   Int
-    status         ApplicationStatus @default("PENDING")
+    status         ApplicationStatus @default(PENDING)
     feedback       String?
     appliedAt      DateTime @default(now())
     updatedAt      DateTime @updatedAt
