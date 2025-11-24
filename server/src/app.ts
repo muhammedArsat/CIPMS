@@ -1,0 +1,10 @@
+import { PORT } from "./configs/env";
+import express from 'express'
+
+const app = express();
+app.use(express.json());
+
+
+
+
+export default app;
