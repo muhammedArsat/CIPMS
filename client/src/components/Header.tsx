@@ -19,7 +19,7 @@ const Header = () => {
         <Menu size={28} />
       </span>
       {/* Sidebar for mobile */}
-      <div className="fixed left-0 top-[4.1rem] min-h-svh ">
+      <div className="fixed left-0 top-[4.1rem]  min-h-svh ">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </div>
       {/* Other header content for desktop */}
