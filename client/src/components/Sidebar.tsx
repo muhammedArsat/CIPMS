@@ -1,5 +1,6 @@
 import { Briefcase, CheckCircle, Users } from "lucide-react";
 import { useLocation } from "react-router";
+import Logout from "./Logout";
 
 const Sidebar = ({
   isOpen,
@@ -38,13 +39,13 @@ const Sidebar = ({
     <>
       {/* Overlay for mobile */}
       <div
-        className={`fixed inset-0 bg-black/10 bg-opacity-40 z-40 md:hidden transition-opacity ${
+        className={`fixed inset-0  bg-opacity-40 z-40 md:hidden transition-opacity ${
           isOpen ? "block" : "hidden"
         }`}
         onClick={onClose}
       />
       <div
-        className={`fixed top-16 left-0  min-h-screen w-[220px] dark:bg-black bg-white shadow-xl z-50 transition-transform duration-300
+        className={`fixed flex-col justify-between items-center top-16 left-0 min-h-screen w-[220px] dark:bg-black shadow-xl  transition-transform duration-300
           ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } md:static md:translate-x-0 md:block`}
@@ -64,6 +65,9 @@ const Sidebar = ({
             </li>
           ))}
         </ul>
+        {/* <ul className="absolute bottom-20 w-full">
+          <Logout />
+        </ul> */}
       </div>
     </>
   );
