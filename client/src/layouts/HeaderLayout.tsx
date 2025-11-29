@@ -4,7 +4,9 @@ const HeaderLayout = () => {
   return (
     <div>
       <Header />
-      <Outlet />
+      <main className="pl-2 md:pl-[250px]">
+        <Outlet />
+      </main>
     </div>
   );
 };
