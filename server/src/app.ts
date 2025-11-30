@@ -1,4 +1,3 @@
-import { PORT } from "./configs/env";
 import express from 'express'
 import errorMiddleware from "./middlewares/error.middleware";
 
