@@ -1,10 +1,6 @@
 
-
-// export interface HTTPError extends Error {
-//     statusCode:number,
-//     message:string
-// }
-
+// class creation for Modified error to show we details about the error with 
+// message and statusCode and success in the response
 export class HTTPError extends Error{
     statusCode:number;
 
