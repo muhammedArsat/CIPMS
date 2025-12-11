@@ -24,12 +24,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.0.0
+ * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
  */
 Prisma.prismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.0.0",
+  engine: "0c19ccc313cf9911a90d99d2ac2eb0280c76c513"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -126,7 +126,8 @@ exports.Prisma.UsersScalarFieldEnum = {
   email: 'email',
   password: 'password',
   role: 'role',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  profileUrl: 'profileUrl'
 };
 
 exports.Prisma.StudentProfilesScalarFieldEnum = {
@@ -138,7 +139,6 @@ exports.Prisma.StudentProfilesScalarFieldEnum = {
   cgpa: 'cgpa',
   skills: 'skills',
   introduction: 'introduction',
-  profileUrl: 'profileUrl',
   mentorId: 'mentorId'
 };
 
@@ -195,8 +195,7 @@ exports.Prisma.NullsOrder = {
 };
 exports.Role = exports.$Enums.Role = {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR',
-  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
+  MENTOR: 'MENTOR'
 };
 
 exports.ApplicationStatus = exports.$Enums.ApplicationStatus = {
