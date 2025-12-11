@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import {prisma} from "../configs/prisma";
+import { prisma } from "../configs/prisma";
 import { HTTPError } from "../types/types";
 import bcrypt from "bcrypt";
 import { generateRefreshToken } from "../utils/auth.utils";
@@ -15,9 +15,9 @@ export const signin = async (
 ) => {
   try {
     const { email, password } = req.body;
-
+    console.log("email", email);
     const user = await prisma.users.findUnique({
-      where: email,
+      where: { email },
     });
 
     if (!user) {
@@ -56,3 +56,17 @@ export const signin = async (
   }
 };
 
+export const signOut = ( req: Request,res: Response) => {
+  const isProduction = NODE === "production";
+ res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction,
+    path: "/",
+    sameSite: "lax",
+  });
+
+  return res.status(200).json({
+    success:true,
+    message:"Signout successful"
+  })
+};

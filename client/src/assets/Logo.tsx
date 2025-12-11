@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { ThemeContext } from "../hooks/ThemeContext";
+
 const Logo = () => {
+  const { isDark } = useContext(ThemeContext);
   return (
     <svg
       width="150"
@@ -33,10 +37,10 @@ const Logo = () => {
         <text
           x="48"
           y="32"
-          className="font-secondary"
+          className="font-secondary dark:text-white"
           fontWeight="bold"
           fontSize="24"
-          fill="#1F2937"
+          fill={isDark?"#FFFFFF":"#1F2937"}
           letterSpacing="-0.5"
         >
           CIPMS

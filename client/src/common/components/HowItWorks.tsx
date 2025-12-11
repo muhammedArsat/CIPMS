@@ -2,7 +2,7 @@ import HowItWorkCard from "./HowItWorkCard";
 import { User,Link,BriefcaseBusinessIcon } from "lucide-react";
 const HowItWorks = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-neutral-50 mt-24 md:m-10 p-4 space-y-3">
+    <div className="flex flex-col justify-center items-center bg-neutral-50 dark:bg-neutral-950 mt-24 md:m-10 p-4 space-y-3">
       <p className="font-semibold">How it work</p>
       <h2>Let's How CIPMS works</h2>
       <p>The steps will help you to track your jobs</p>

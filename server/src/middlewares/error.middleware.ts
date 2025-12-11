@@ -9,12 +9,17 @@ const errorMiddleware = (
   next: NextFunction
 ) => {
   if (err instanceof HTTPError) {
+    console.log(err); // Log full error in console
     return res.status(err.statusCode).json({
       success: false,
-      message: err.message,
+      message: err.message, // Generic message for client
     });
-  }else{
-    return res.status(500).json({success:false, message:"Internal server Error"})
+  } else {
+    console.log(err); // Log unexpected errors
+    return res.status(500).json({
+      success: false,
+      message: "Internal server Error",
+    });
   }
 };
 

@@ -23,7 +23,7 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="basis-2/4 flex justify-center items-center relative ">
-        <div className="bg-white shadow-2xl min-w-[20rem] flex space-y-4 flex-col py-4 px-4 ">
+        <div className="bg-white dark:bg-secondary shadow-2xl min-w-[20rem] flex space-y-4 flex-col py-4 px-4 ">
           <h3 className="text-center">Start find a job</h3>
           <div className="relative">
             <BriefcaseBusiness
@@ -62,7 +62,7 @@ const HeroSection = () => {
             Apply Now
           </span>
         </div>
-        <div className="absolute  hover:scale-105 transition duration-300 hover:shadow-xl space-y-3 bg-white shadow-lg p-4 -bottom-20 md:-bottom-10  left-0 md:left-4 rotate-7 md:-rotate-7 ">
+        <div className="absolute  hover:scale-105 transition duration-300 hover:shadow-xl space-y-3 bg-white dark:bg-secondary shadow-lg p-4 -bottom-20 md:-bottom-10  left-0 md:left-4 rotate-7 md:-rotate-7 ">
           <div className="flex justify-between items-center space-x-4">
             <img src={googleLogo} alt="google" className="w-7 h-7" />
             <span>
@@ -76,7 +76,7 @@ const HeroSection = () => {
           </span>
         </div>
 
-        <div className="bg-white hover:scale-105 transition duration-300 hover:shadow-xl  hidden md:flex  flex-col -rotate-8 md:rotate-8 space-y-4 shadow-lg p-4 md:top-0   absolute md:right-5 ">
+        <div className="bg-white dark:bg-secondary hover:scale-105 transition duration-300 hover:shadow-xl  hidden md:flex  flex-col -rotate-8 md:rotate-8 space-y-4 shadow-lg p-4 md:top-0   absolute md:right-5 ">
           <span className="font-light flex justify-between items-center w-full ">
             <img src={googleLogo} alt="google" className="w-7 h-7" />
             15 days ago
@@ -86,14 +86,14 @@ const HeroSection = () => {
             <p>Google.inc - Bengaluru, India</p>
           </div>
           <div className="flex justify-start items-center w-full space-x-4">
-            <span className="bg-neutral-200 p-1 font-secondary font-light text-[12px]">
+            <span className="bg-neutral-200 dark:bg-neutral-900 p-1 font-secondary font-light text-[12px]">
               Remote
             </span>
-            <span className="bg-neutral-200 p-1 font-secondary font-light text-[12px]">
+            <span className="bg-neutral-200 dark:bg-neutral-900  p-1 font-secondary font-light text-[12px]">
               Fulltime
             </span>
 
-            <span className="bg-neutral-200 p-1 font-secondary font-light text-[12px]">
+            <span className="bg-neutral-200 dark:bg-neutral-900  p-1 font-secondary font-light text-[12px]">
               Designer
             </span>
           </div>

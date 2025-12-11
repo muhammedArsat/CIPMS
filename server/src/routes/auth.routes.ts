@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import { signin } from "../controllers/auth.controller";
+import { signin, signOut } from "../controllers/auth.controller";
 import passport from "passport";
 import { HTTPError } from "../types/types";
 import { generateRefreshToken } from "../utils/auth.utils";
@@ -23,6 +23,7 @@ router.get(
 
         if (!user) {
           // handle failed login, otherwise it can hang too
+          res.redirect(`${CLIENT_URL}`);
           return next(new HTTPError("User not Registered", 401));
         }
 
@@ -43,7 +44,7 @@ router.get(
           maxAge: 360 * 60 * 60 * 1000,
         });
 
-        return res.redirect(`${CLIENT_URL}`);
+        return res.redirect(`${CLIENT_URL}/internships`);
       }
     )(req, res, next);
   }
@@ -52,7 +53,13 @@ router.get(
 //route to trigger google Oauth
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    prompt: "select_account consent",
+  })
 );
+
+//route to logout
+router.post("/signout", signOut);
 
 export default router;

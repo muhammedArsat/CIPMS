@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { Moon, Bell, Menu } from "lucide-react";
+import { useContext, useState } from "react";
+import { Moon, Bell, Menu, Sun } from "lucide-react";
 import Avatar from "../assets/avatar.svg";
 import Logo from "../assets/Logo";
 import Sidebar from "./Sidebar";
+import { ThemeContext } from "../hooks/ThemeContext";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const { isDark, toggleTheme } = useContext(ThemeContext);
   return (
-    <header className="flex justify-between py-2 md:px-2 mb-2 mx-3 border-b border-neutral-300 items-center">
+    <header className="flex justify-between py-2 md:px-2 mb-2 mx-3 border-b border-neutral-300 dark:border-secondary items-center">
       <Logo />
       {/* Hamburger for mobile */}
       <span
@@ -24,7 +25,13 @@ const Header = () => {
       </div>
       {/* Other header content for desktop */}
       <div className=" flex justify-center items-center space-x-4">
-        <Moon strokeWidth={1} className="cursor-pointer" />
+        <span onClick={toggleTheme}>
+          {!isDark ? (
+            <Moon strokeWidth={1} className="cursor-pointer" />
+          ) : (
+            <Sun strokeWidth={1} className="cursor-pointer" />
+          )}
+        </span>
         <span>
           <Bell strokeWidth={1} className="cursor-pointer" />
         </span>

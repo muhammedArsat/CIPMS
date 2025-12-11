@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo";
 const LandingHeader = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-between py-4 md:px-10 mb-2 mx-3 border-b border-neutral-300">
+    <div className="flex justify-between py-4 md:px-10 mb-2 mx-3 border-b border-neutral-300 dark:border-secondary">
       <Logo />
       <div className="flex justify-center items-center space-x-4">
         {/* <span className="font-light min-w-20 font-primary p-2 border rounded-md border-neutral-600 hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer" onClick={()=> navigate("/signup")}>Sign Up</span> */}

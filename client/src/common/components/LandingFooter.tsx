@@ -2,7 +2,7 @@ import Logo from "../../assets/Logo";
 
 const LandingFooter = () => {
   return (
-    <div className="bg-neutral-100 py-6 flex flex-col items-center space-y-4">
+    <div className="bg-neutral-100 dark:bg-neutral-950 py-6 flex flex-col items-center space-y-4">
       <div className="flex flex-col items-center space-y-2">
         <Logo />
         <h4 className="font-semibold">Empowering Technical Education</h4>

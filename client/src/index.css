@@ -14,9 +14,13 @@
 
 }
 
+body{
+  transition: 200ms;
+}
 body.dark{
   background-color: #181818 !important;
   color: white;
+  transition: 200ms;
 }
 
 h1 {
