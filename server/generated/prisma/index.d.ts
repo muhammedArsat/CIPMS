@@ -50,8 +50,7 @@ export type SavedInternships = $Result.DefaultSelection<Prisma.$SavedInternships
 export namespace $Enums {
   export const Role: {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR',
-  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
+  MENTOR: 'MENTOR'
 };
 
 export type Role = (typeof Role)[keyof typeof Role]
@@ -88,7 +87,7 @@ export const ApplicationStatus: typeof $Enums.ApplicationStatus
  * ```
  *
  *
- * Read more in our [docs](https://pris.ly/d/client).
+ * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
@@ -109,7 +108,7 @@ export class PrismaClient<
    * ```
    *
    *
-   * Read more in our [docs](https://pris.ly/d/client).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
@@ -132,7 +131,7 @@ export class PrismaClient<
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -144,7 +143,7 @@ export class PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -155,7 +154,7 @@ export class PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -167,7 +166,7 @@ export class PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -302,8 +301,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.1.0
-   * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+   * Prisma Client JS version: 7.0.0
+   * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
    */
   export type PrismaVersion = {
     client: string
@@ -1209,7 +1208,7 @@ export namespace Prisma {
      *  { emit: 'stdout', level: 'error' }
      * 
      * ```
-     * Read more in our [docs](https://pris.ly/d/logging).
+     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
     log?: (LogLevel | LogDefinition)[]
     /**
@@ -1245,22 +1244,6 @@ export namespace Prisma {
      * ```
      */
     omit?: Prisma.GlobalOmitConfig
-    /**
-     * SQL commenter plugins that add metadata to SQL queries as comments.
-     * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   adapter,
-     *   comments: [
-     *     traceContext(),
-     *     queryInsights(),
-     *   ],
-     * })
-     * ```
-     */
-    comments?: runtime.SqlCommenterPlugin[]
   }
   export type GlobalOmitConfig = {
     users?: UsersOmit
@@ -1486,6 +1469,7 @@ export namespace Prisma {
     password: string | null
     role: $Enums.Role | null
     createdAt: Date | null
+    profileUrl: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -1495,6 +1479,7 @@ export namespace Prisma {
     password: string | null
     role: $Enums.Role | null
     createdAt: Date | null
+    profileUrl: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -1504,6 +1489,7 @@ export namespace Prisma {
     password: number
     role: number
     createdAt: number
+    profileUrl: number
     _all: number
   }
 
@@ -1523,6 +1509,7 @@ export namespace Prisma {
     password?: true
     role?: true
     createdAt?: true
+    profileUrl?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -1532,6 +1519,7 @@ export namespace Prisma {
     password?: true
     role?: true
     createdAt?: true
+    profileUrl?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -1541,6 +1529,7 @@ export namespace Prisma {
     password?: true
     role?: true
     createdAt?: true
+    profileUrl?: true
     _all?: true
   }
 
@@ -1637,6 +1626,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt: Date
+    profileUrl: string | null
     _count: UsersCountAggregateOutputType | null
     _avg: UsersAvgAggregateOutputType | null
     _sum: UsersSumAggregateOutputType | null
@@ -1665,6 +1655,7 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     createdAt?: boolean
+    profileUrl?: boolean
     studentProfile?: boolean | Users$studentProfileArgs<ExtArgs>
     mentorProfile?: boolean | Users$mentorProfileArgs<ExtArgs>
     applications?: boolean | Users$applicationsArgs<ExtArgs>
@@ -1679,6 +1670,7 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     createdAt?: boolean
+    profileUrl?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1688,6 +1680,7 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     createdAt?: boolean
+    profileUrl?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectScalar = {
@@ -1697,9 +1690,10 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     createdAt?: boolean
+    profileUrl?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "createdAt", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "createdAt" | "profileUrl", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     studentProfile?: boolean | Users$studentProfileArgs<ExtArgs>
     mentorProfile?: boolean | Users$mentorProfileArgs<ExtArgs>
@@ -1725,6 +1719,7 @@ export namespace Prisma {
       password: string
       role: $Enums.Role
       createdAt: Date
+      profileUrl: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -2158,6 +2153,7 @@ export namespace Prisma {
     readonly password: FieldRef<"Users", 'String'>
     readonly role: FieldRef<"Users", 'Role'>
     readonly createdAt: FieldRef<"Users", 'DateTime'>
+    readonly profileUrl: FieldRef<"Users", 'String'>
   }
     
 
@@ -2684,7 +2680,6 @@ export namespace Prisma {
     department: string | null
     cgpa: number | null
     introduction: string | null
-    profileUrl: string | null
     mentorId: number | null
   }
 
@@ -2696,7 +2691,6 @@ export namespace Prisma {
     department: string | null
     cgpa: number | null
     introduction: string | null
-    profileUrl: string | null
     mentorId: number | null
   }
 
@@ -2709,7 +2703,6 @@ export namespace Prisma {
     cgpa: number
     skills: number
     introduction: number
-    profileUrl: number
     mentorId: number
     _all: number
   }
@@ -2737,7 +2730,6 @@ export namespace Prisma {
     department?: true
     cgpa?: true
     introduction?: true
-    profileUrl?: true
     mentorId?: true
   }
 
@@ -2749,7 +2741,6 @@ export namespace Prisma {
     department?: true
     cgpa?: true
     introduction?: true
-    profileUrl?: true
     mentorId?: true
   }
 
@@ -2762,7 +2753,6 @@ export namespace Prisma {
     cgpa?: true
     skills?: true
     introduction?: true
-    profileUrl?: true
     mentorId?: true
     _all?: true
   }
@@ -2862,7 +2852,6 @@ export namespace Prisma {
     cgpa: number | null
     skills: string[]
     introduction: string | null
-    profileUrl: string | null
     mentorId: number | null
     _count: StudentProfilesCountAggregateOutputType | null
     _avg: StudentProfilesAvgAggregateOutputType | null
@@ -2894,7 +2883,6 @@ export namespace Prisma {
     cgpa?: boolean
     skills?: boolean
     introduction?: boolean
-    profileUrl?: boolean
     mentorId?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
     mentor?: boolean | StudentProfiles$mentorArgs<ExtArgs>
@@ -2909,7 +2897,6 @@ export namespace Prisma {
     cgpa?: boolean
     skills?: boolean
     introduction?: boolean
-    profileUrl?: boolean
     mentorId?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
     mentor?: boolean | StudentProfiles$mentorArgs<ExtArgs>
@@ -2924,7 +2911,6 @@ export namespace Prisma {
     cgpa?: boolean
     skills?: boolean
     introduction?: boolean
-    profileUrl?: boolean
     mentorId?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
     mentor?: boolean | StudentProfiles$mentorArgs<ExtArgs>
@@ -2939,11 +2925,10 @@ export namespace Prisma {
     cgpa?: boolean
     skills?: boolean
     introduction?: boolean
-    profileUrl?: boolean
     mentorId?: boolean
   }
 
-  export type StudentProfilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "resumeUrl" | "rollNo" | "department" | "cgpa" | "skills" | "introduction" | "profileUrl" | "mentorId", ExtArgs["result"]["studentProfiles"]>
+  export type StudentProfilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "resumeUrl" | "rollNo" | "department" | "cgpa" | "skills" | "introduction" | "mentorId", ExtArgs["result"]["studentProfiles"]>
   export type StudentProfilesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     mentor?: boolean | StudentProfiles$mentorArgs<ExtArgs>
@@ -2972,7 +2957,6 @@ export namespace Prisma {
       cgpa: number | null
       skills: string[]
       introduction: string | null
-      profileUrl: string | null
       mentorId: number | null
     }, ExtArgs["result"]["studentProfiles"]>
     composites: {}
@@ -3407,7 +3391,6 @@ export namespace Prisma {
     readonly cgpa: FieldRef<"StudentProfiles", 'Float'>
     readonly skills: FieldRef<"StudentProfiles", 'String[]'>
     readonly introduction: FieldRef<"StudentProfiles", 'String'>
-    readonly profileUrl: FieldRef<"StudentProfiles", 'String'>
     readonly mentorId: FieldRef<"StudentProfiles", 'Int'>
   }
     
@@ -8401,7 +8384,8 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     role: 'role',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    profileUrl: 'profileUrl'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -8416,7 +8400,6 @@ export namespace Prisma {
     cgpa: 'cgpa',
     skills: 'skills',
     introduction: 'introduction',
-    profileUrl: 'profileUrl',
     mentorId: 'mentorId'
   };
 
@@ -8598,6 +8581,7 @@ export namespace Prisma {
     password?: StringFilter<"Users"> | string
     role?: EnumRoleFilter<"Users"> | $Enums.Role
     createdAt?: DateTimeFilter<"Users"> | Date | string
+    profileUrl?: StringNullableFilter<"Users"> | string | null
     studentProfile?: XOR<StudentProfilesNullableScalarRelationFilter, StudentProfilesWhereInput> | null
     mentorProfile?: XOR<MentorProfilesNullableScalarRelationFilter, MentorProfilesWhereInput> | null
     applications?: ApplicationsListRelationFilter
@@ -8611,6 +8595,7 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+    profileUrl?: SortOrderInput | SortOrder
     studentProfile?: StudentProfilesOrderByWithRelationInput
     mentorProfile?: MentorProfilesOrderByWithRelationInput
     applications?: ApplicationsOrderByRelationAggregateInput
@@ -8627,6 +8612,7 @@ export namespace Prisma {
     password?: StringFilter<"Users"> | string
     role?: EnumRoleFilter<"Users"> | $Enums.Role
     createdAt?: DateTimeFilter<"Users"> | Date | string
+    profileUrl?: StringNullableFilter<"Users"> | string | null
     studentProfile?: XOR<StudentProfilesNullableScalarRelationFilter, StudentProfilesWhereInput> | null
     mentorProfile?: XOR<MentorProfilesNullableScalarRelationFilter, MentorProfilesWhereInput> | null
     applications?: ApplicationsListRelationFilter
@@ -8640,6 +8626,7 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+    profileUrl?: SortOrderInput | SortOrder
     _count?: UsersCountOrderByAggregateInput
     _avg?: UsersAvgOrderByAggregateInput
     _max?: UsersMaxOrderByAggregateInput
@@ -8657,6 +8644,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"Users"> | string
     role?: EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
     createdAt?: DateTimeWithAggregatesFilter<"Users"> | Date | string
+    profileUrl?: StringNullableWithAggregatesFilter<"Users"> | string | null
   }
 
   export type StudentProfilesWhereInput = {
@@ -8671,7 +8659,6 @@ export namespace Prisma {
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
     skills?: StringNullableListFilter<"StudentProfiles">
     introduction?: StringNullableFilter<"StudentProfiles"> | string | null
-    profileUrl?: StringNullableFilter<"StudentProfiles"> | string | null
     mentorId?: IntNullableFilter<"StudentProfiles"> | number | null
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     mentor?: XOR<MentorProfilesNullableScalarRelationFilter, MentorProfilesWhereInput> | null
@@ -8686,7 +8673,6 @@ export namespace Prisma {
     cgpa?: SortOrderInput | SortOrder
     skills?: SortOrder
     introduction?: SortOrderInput | SortOrder
-    profileUrl?: SortOrderInput | SortOrder
     mentorId?: SortOrderInput | SortOrder
     user?: UsersOrderByWithRelationInput
     mentor?: MentorProfilesOrderByWithRelationInput
@@ -8704,7 +8690,6 @@ export namespace Prisma {
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
     skills?: StringNullableListFilter<"StudentProfiles">
     introduction?: StringNullableFilter<"StudentProfiles"> | string | null
-    profileUrl?: StringNullableFilter<"StudentProfiles"> | string | null
     mentorId?: IntNullableFilter<"StudentProfiles"> | number | null
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     mentor?: XOR<MentorProfilesNullableScalarRelationFilter, MentorProfilesWhereInput> | null
@@ -8719,7 +8704,6 @@ export namespace Prisma {
     cgpa?: SortOrderInput | SortOrder
     skills?: SortOrder
     introduction?: SortOrderInput | SortOrder
-    profileUrl?: SortOrderInput | SortOrder
     mentorId?: SortOrderInput | SortOrder
     _count?: StudentProfilesCountOrderByAggregateInput
     _avg?: StudentProfilesAvgOrderByAggregateInput
@@ -8740,7 +8724,6 @@ export namespace Prisma {
     cgpa?: FloatNullableWithAggregatesFilter<"StudentProfiles"> | number | null
     skills?: StringNullableListFilter<"StudentProfiles">
     introduction?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
-    profileUrl?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
     mentorId?: IntNullableWithAggregatesFilter<"StudentProfiles"> | number | null
   }
 
@@ -9015,6 +8998,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesCreateNestedOneWithoutUserInput
     applications?: ApplicationsCreateNestedManyWithoutUserInput
@@ -9028,6 +9012,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesUncheckedCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesUncheckedCreateNestedOneWithoutUserInput
     applications?: ApplicationsUncheckedCreateNestedManyWithoutUserInput
@@ -9040,6 +9025,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUpdateManyWithoutUserNestedInput
@@ -9053,6 +9039,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUncheckedUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUncheckedUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUncheckedUpdateManyWithoutUserNestedInput
@@ -9066,6 +9053,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
   }
 
   export type UsersUpdateManyMutationInput = {
@@ -9074,6 +9062,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UsersUncheckedUpdateManyInput = {
@@ -9083,6 +9072,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StudentProfilesCreateInput = {
@@ -9092,7 +9082,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     user: UsersCreateNestedOneWithoutStudentProfileInput
     mentor?: MentorProfilesCreateNestedOneWithoutMenteesInput
   }
@@ -9106,7 +9095,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     mentorId?: number | null
   }
 
@@ -9117,7 +9105,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UsersUpdateOneRequiredWithoutStudentProfileNestedInput
     mentor?: MentorProfilesUpdateOneWithoutMenteesNestedInput
   }
@@ -9131,7 +9118,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentorId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -9144,7 +9130,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     mentorId?: number | null
   }
 
@@ -9155,7 +9140,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StudentProfilesUncheckedUpdateManyInput = {
@@ -9167,7 +9151,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentorId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -9469,6 +9452,21 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type StudentProfilesNullableScalarRelationFilter = {
     is?: StudentProfilesWhereInput | null
     isNot?: StudentProfilesWhereInput | null
@@ -9491,6 +9489,11 @@ export namespace Prisma {
     none?: SavedInternshipsWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type ApplicationsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -9506,6 +9509,7 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+    profileUrl?: SortOrder
   }
 
   export type UsersAvgOrderByAggregateInput = {
@@ -9519,6 +9523,7 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+    profileUrl?: SortOrder
   }
 
   export type UsersMinOrderByAggregateInput = {
@@ -9528,6 +9533,7 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+    profileUrl?: SortOrder
   }
 
   export type UsersSumOrderByAggregateInput = {
@@ -9592,7 +9598,7 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9604,7 +9610,10 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -9642,11 +9651,6 @@ export namespace Prisma {
     isNot?: UsersWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type StudentProfilesCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -9656,7 +9660,6 @@ export namespace Prisma {
     cgpa?: SortOrder
     skills?: SortOrder
     introduction?: SortOrder
-    profileUrl?: SortOrder
     mentorId?: SortOrder
   }
 
@@ -9675,7 +9678,6 @@ export namespace Prisma {
     department?: SortOrder
     cgpa?: SortOrder
     introduction?: SortOrder
-    profileUrl?: SortOrder
     mentorId?: SortOrder
   }
 
@@ -9687,7 +9689,6 @@ export namespace Prisma {
     department?: SortOrder
     cgpa?: SortOrder
     introduction?: SortOrder
-    profileUrl?: SortOrder
     mentorId?: SortOrder
   }
 
@@ -9696,24 +9697,6 @@ export namespace Prisma {
     userId?: SortOrder
     cgpa?: SortOrder
     mentorId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9997,6 +9980,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type StudentProfilesUpdateOneWithoutUserNestedInput = {
     create?: XOR<StudentProfilesCreateWithoutUserInput, StudentProfilesUncheckedCreateWithoutUserInput>
     connectOrCreate?: StudentProfilesCreateOrConnectWithoutUserInput
@@ -10115,10 +10102,6 @@ export namespace Prisma {
     create?: XOR<MentorProfilesCreateWithoutMenteesInput, MentorProfilesUncheckedCreateWithoutMenteesInput>
     connectOrCreate?: MentorProfilesCreateOrConnectWithoutMenteesInput
     connect?: MentorProfilesWhereUniqueInput
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -10421,6 +10404,20 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10489,42 +10486,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10540,6 +10501,28 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10598,7 +10581,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     mentor?: MentorProfilesCreateNestedOneWithoutMenteesInput
   }
 
@@ -10610,7 +10592,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     mentorId?: number | null
   }
 
@@ -10703,7 +10684,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentor?: MentorProfilesUpdateOneWithoutMenteesNestedInput
   }
 
@@ -10715,7 +10695,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentorId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -10804,6 +10783,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     mentorProfile?: MentorProfilesCreateNestedOneWithoutUserInput
     applications?: ApplicationsCreateNestedManyWithoutUserInput
     saved?: SavedInternshipsCreateNestedManyWithoutUserInput
@@ -10816,6 +10796,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     mentorProfile?: MentorProfilesUncheckedCreateNestedOneWithoutUserInput
     applications?: ApplicationsUncheckedCreateNestedManyWithoutUserInput
     saved?: SavedInternshipsUncheckedCreateNestedManyWithoutUserInput
@@ -10861,6 +10842,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentorProfile?: MentorProfilesUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUpdateManyWithoutUserNestedInput
     saved?: SavedInternshipsUpdateManyWithoutUserNestedInput
@@ -10873,6 +10855,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mentorProfile?: MentorProfilesUncheckedUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUncheckedUpdateManyWithoutUserNestedInput
     saved?: SavedInternshipsUncheckedUpdateManyWithoutUserNestedInput
@@ -10908,6 +10891,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesCreateNestedOneWithoutUserInput
     applications?: ApplicationsCreateNestedManyWithoutUserInput
     saved?: SavedInternshipsCreateNestedManyWithoutUserInput
@@ -10920,6 +10904,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesUncheckedCreateNestedOneWithoutUserInput
     applications?: ApplicationsUncheckedCreateNestedManyWithoutUserInput
     saved?: SavedInternshipsUncheckedCreateNestedManyWithoutUserInput
@@ -10937,7 +10922,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
     user: UsersCreateNestedOneWithoutStudentProfileInput
   }
 
@@ -10950,7 +10934,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
   }
 
   export type StudentProfilesCreateOrConnectWithoutMentorInput = {
@@ -10980,6 +10963,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUpdateManyWithoutUserNestedInput
     saved?: SavedInternshipsUpdateManyWithoutUserNestedInput
@@ -10992,6 +10976,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUncheckedUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUncheckedUpdateManyWithoutUserNestedInput
     saved?: SavedInternshipsUncheckedUpdateManyWithoutUserNestedInput
@@ -11025,7 +11010,6 @@ export namespace Prisma {
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
     skills?: StringNullableListFilter<"StudentProfiles">
     introduction?: StringNullableFilter<"StudentProfiles"> | string | null
-    profileUrl?: StringNullableFilter<"StudentProfiles"> | string | null
     mentorId?: IntNullableFilter<"StudentProfiles"> | number | null
   }
 
@@ -11115,6 +11099,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesCreateNestedOneWithoutUserInput
     saved?: SavedInternshipsCreateNestedManyWithoutUserInput
@@ -11127,6 +11112,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesUncheckedCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesUncheckedCreateNestedOneWithoutUserInput
     saved?: SavedInternshipsUncheckedCreateNestedManyWithoutUserInput
@@ -11186,6 +11172,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUpdateOneWithoutUserNestedInput
     saved?: SavedInternshipsUpdateManyWithoutUserNestedInput
@@ -11198,6 +11185,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUncheckedUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUncheckedUpdateOneWithoutUserNestedInput
     saved?: SavedInternshipsUncheckedUpdateManyWithoutUserNestedInput
@@ -11247,6 +11235,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesCreateNestedOneWithoutUserInput
     applications?: ApplicationsCreateNestedManyWithoutUserInput
@@ -11259,6 +11248,7 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     createdAt?: Date | string
+    profileUrl?: string | null
     studentProfile?: StudentProfilesUncheckedCreateNestedOneWithoutUserInput
     mentorProfile?: MentorProfilesUncheckedCreateNestedOneWithoutUserInput
     applications?: ApplicationsUncheckedCreateNestedManyWithoutUserInput
@@ -11318,6 +11308,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUpdateManyWithoutUserNestedInput
@@ -11330,6 +11321,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     studentProfile?: StudentProfilesUncheckedUpdateOneWithoutUserNestedInput
     mentorProfile?: MentorProfilesUncheckedUpdateOneWithoutUserNestedInput
     applications?: ApplicationsUncheckedUpdateManyWithoutUserNestedInput
@@ -11440,7 +11432,6 @@ export namespace Prisma {
     cgpa?: number | null
     skills?: StudentProfilesCreateskillsInput | string[]
     introduction?: string | null
-    profileUrl?: string | null
   }
 
   export type StudentProfilesUpdateWithoutMentorInput = {
@@ -11450,7 +11441,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UsersUpdateOneRequiredWithoutStudentProfileNestedInput
   }
 
@@ -11463,7 +11453,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StudentProfilesUncheckedUpdateManyWithoutMentorInput = {
@@ -11475,7 +11464,6 @@ export namespace Prisma {
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
     skills?: StudentProfilesUpdateskillsInput | string[]
     introduction?: NullableStringFieldUpdateOperationsInput | string | null
-    profileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ApplicationsCreateManyInternshipInput = {

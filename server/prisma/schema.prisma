@@ -16,7 +16,6 @@ datasource db {
 enum Role{
     STUDENT
     MENTOR
-    PLACEMENTOFFICER
 }
 enum ApplicationStatus{
     PENDING
@@ -31,7 +30,7 @@ model Users{
     password  String
     role      Role
     createdAt DateTime      @default(now())
-
+    profileUrl    String?
     studentProfile StudentProfiles?
     mentorProfile  MentorProfiles?
     applications Applications[]
@@ -46,7 +45,6 @@ model StudentProfiles{
     cgpa         Float?
     skills       String[]
     introduction String?
-    profileUrl    String?
     mentorId     Int?
 
     user Users           @relation(fields:[userId],references:[id])
