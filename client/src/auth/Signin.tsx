@@ -5,6 +5,7 @@ import GoogleLogo from "../assets/googleLogo.svg";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLocation } from "react-router";
+import { signIn } from "./apis/auth.api";
 
 const Signin = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -27,15 +28,14 @@ const Signin = () => {
   };
 
   //function to signin
-  const handleSignIn = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({
-      email: "",
-      password: "",
-    });
-
-    toast.success("Signin successful");
+    try {
+      const res = await signIn(formData);
+      toast.success(`${res.message}`);
+    } catch (err: any) {
+      toast.error(err?.response?.data?.message);
+    }
   };
   const location = useLocation();
   useEffect(() => {
@@ -47,14 +47,14 @@ const Signin = () => {
 
   const handleOauth = () => {
     try {
-      window.location.href = "http://localhost:3000/api/v1/auth/google";
+      window.location.href = `${import.meta.env.VITE_SERVER_URL}/auth/google`;
     } catch (err) {
       toast.error("Server error!!");
     }
   };
   return (
     <div className="flex min-h-svh p-2 sm:p-0 justify-center items-center">
-      <div className=" basis-1/2 lg:basis-1/3 flex justify-center items-center flex-col space-y-2 shadow-2xl md:shadow-none p-2 rounded-lg">
+      <div className=" lg:basis-1/3 flex justify-center items-center flex-col space-y-2 shadow-2xl md:shadow-none p-2 rounded-lg">
         <span className="absolute top-0 left-0">
           <Logo />
         </span>
