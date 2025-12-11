@@ -5,12 +5,18 @@
 @theme {
   --font-primary: "Inter";
   --font-secondary: "Lexend";
+  --color-action: #3F37C9;
+  --color-hover:#4361EE;
+  --color-active:#3A0CA3;
+  --color-darkSecondary:#e5e5e5;
+  --color-secondary:#404040
+
+
 }
 
-
-
-body.dark {
+body.dark{
   background-color: #181818 !important;
+  color: white;
 }
 
 h1 {
@@ -22,9 +28,28 @@ h2 {
 h3 {
   @apply text-[1.1rem] md:text-[1.3rem] font-secondary font-light tracking-wider;
 }
-h4{
-    @apply text-[1rem] font-secondary font-normal tracking-wide
+h4 {
+  @apply text-[.9rem] font-secondary  tracking-wide;
 }
 p {
   @apply text-[1rem] font-secondary font-light tracking-wide;
+}
+span{
+  @apply font-secondary 
+}
+label{
+  @apply font-secondary font-light text-[1rem]
+}
+
+button{
+  @apply font-secondary text-white cursor-pointer font-light bg-action hover:bg-hover active:bg-active 
+}
+
+@layer{
+  .input-container{
+    @apply flex flex-col justify-center items-start space-y-2 relative 
+  }
+  .input-base{
+    @apply w-full font-secondary focus:outline-action border border-neutral-200  dark:border-neutral-700 pl-10 py-3 rounded-lg
+  }
 }

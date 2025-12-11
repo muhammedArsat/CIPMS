@@ -24,13 +24,13 @@ const Ecosystem = () => {
   return (
     <div className="flex flex-col space-y-4 md:mx-20 my-2">
       <h2 className="text-center">An Unified ecosystem</h2>
-      <div className="w-full flex justify-evenly items-center space-x-16 relative">
+      <div className="w-full flex justify-evenly items-center  relative">
         {tabList.map((tab, idx) => (
           <span
             key={tab}
             ref={tabRefs[idx]}
             className={`font-secondary md:text-lg font-light cursor-pointer ${
-              currentPage === idx ? "text-blue-500" : ""
+              currentPage === idx ? "text-action" : ""
             }`}
             onClick={() => setCurrentPage(idx)}
           >
@@ -39,7 +39,7 @@ const Ecosystem = () => {
         ))}
         {/* Sliding indicator */}
         <div
-          className="absolute bottom-0 h-1 bg-blue-500 rounded transition-all duration-300"
+          className="absolute bottom-0 h-1 bg-action rounded transition-all duration-300"
           style={{
             left: indicatorStyle.left,
             width: indicatorStyle.width,

@@ -1,0 +1,14 @@
+import { PORT } from "./configs/env";
+import express from 'express'
+import errorMiddleware from "./middlewares/error.middleware";
+
+const app = express();
+app.use(express.json());
+
+
+
+//Global error handling middleware
+app.use(errorMiddleware);
+
+
+export default app;
