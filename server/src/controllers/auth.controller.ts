@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import prisma from "../configs/prisma";
+import {prisma} from "../configs/prisma";
 import { HTTPError } from "../types/types";
 import bcrypt from "bcrypt";
 import { generateRefreshToken } from "../utils/auth.utils";
@@ -55,3 +55,4 @@ export const signin = async (
     next(err);
   }
 };
+

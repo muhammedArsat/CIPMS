@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../assets/Logo";
 import LoginPoster from "../assets/loginPic.png";
 import GoogleLogo from "../assets/googleLogo.svg";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
+import { useLocation } from "react-router";
 
 const Signin = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -35,6 +36,21 @@ const Signin = () => {
     });
 
     toast.success("Signin successful");
+  };
+  const location = useLocation();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("error") === "oauth_failed") {
+      toast.error("Google sign-in failed!");
+    }
+  }, [location]);
+
+  const handleOauth = () => {
+    try {
+      window.location.href = "http://localhost:3000/api/v1/auth/google";
+    } catch (err) {
+      toast.error("Server error!!");
+    }
   };
   return (
     <div className="flex min-h-svh p-2 sm:p-0 justify-center items-center">
@@ -90,12 +106,14 @@ const Signin = () => {
             Sign In
           </button>
         </form>
-       <span className="font-light">or</span>
-       <span className="flex justify-center items-center gap-4 w-full md:w-[80%] rounded-lg p-2 cursor-pointer border border-darkSecondary dark:border-secondary hover:bg-neutral-200 active:bg-neutral-300 dark:hover:bg-neutral-800 dark:active:bg-neutral-700">
-       <img src={GoogleLogo} alt="google logo" className="w-8 h-8" />
-        sign in with google
-       </span>
-      
+        <span className="font-light">or</span>
+        <span
+          className="flex justify-center items-center gap-4 w-full md:w-[80%] rounded-lg p-2 cursor-pointer border border-darkSecondary dark:border-secondary hover:bg-neutral-200 active:bg-neutral-300 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
+          onClick={handleOauth}
+        >
+          <img src={GoogleLogo} alt="google logo" className="w-8 h-8" />
+          sign in with google
+        </span>
       </div>
       <div className="hidden space-y-4 md:flex sm:flex-col p-2 justify-center items-center basis-1/2 lg:basis-2/3 bg-action min-h-svh ">
         <h2 className="text-white text-center">
@@ -110,7 +128,6 @@ const Signin = () => {
             alt="Login Poster"
             className="sm:max-w-sm md:max-w-lg xl:max-w-3xl rounded-lg "
           />
-         
         </div>
       </div>
     </div>

@@ -48,13 +48,13 @@ const Sidebar = ({
         className={`fixed flex-col justify-between items-center top-16 left-0 min-h-screen w-[220px] dark:bg-black shadow-xl  transition-transform duration-300
           ${
             isOpen ? "translate-x-0" : "-translate-x-full"
-          } md:static md:translate-x-0 md:block`}
+          } md:static md:translate-x-0 md:flex`}
       >
         <ul className="w-full flex flex-col">
           {links.map((link, idx) => (
             <li
               key={idx}
-              className={`p-2 flex justify-start capitalize items-center cursor-pointer transition ${
+              className={`p-2 flex text-lg font-secondary font-light tracking-wider justify-start capitalize items-center cursor-pointer transition ${
                 pathname.startsWith(`/${link.path}`)
                   ? "bg-gradient-to-r from-action border-l-4 border-active to-blue-300 text-white"
                   : ""
@@ -65,9 +65,9 @@ const Sidebar = ({
             </li>
           ))}
         </ul>
-        {/* <ul className="absolute bottom-20 w-full">
+        <ul className="absolute bottom-16 w-full">
           <Logout />
-        </ul> */}
+        </ul>
       </div>
     </>
   );

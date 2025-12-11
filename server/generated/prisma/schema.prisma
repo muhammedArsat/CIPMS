@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  STUDENT
+  MENTOR
+  PLACEMENTOFFICER
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role
+  createdAt DateTime @default(now())
+
+  studentProfile StudentProfiles?
+  mentorProfile  MentorProfiles?
+  applications   Applications[]
+  saved          SavedInternships[]
+}
+
+model StudentProfiles {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @unique
+  resumeUrl    String?
+  rollNo       String?
+  department   String?
+  cgpa         Float?
+  skills       String[]
+  introduction String?
+  profileUrl   String?
+  mentorId     Int?
+
+  user   Users           @relation(fields: [userId], references: [id])
+  mentor MentorProfiles? @relation(fields: [mentorId], references: [id])
+}
+
+model MentorProfiles {
+  id          Int     @id @default(autoincrement())
+  userId      Int     @unique
+  designation String?
+  department  String?
+
+  user    Users             @relation(fields: [userId], references: [id])
+  mentees StudentProfiles[]
+}
+
+model Internships {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  tags        String[]
+  skills      String[]
+  cutoff      Float?
+  ctc         Float?
+  duration    String?
+  mode        String?
+  createdAt   DateTime @default(now())
+
+  applications Applications[]
+  saved        SavedInternships[]
+}
+
+model Applications {
+  id           Int               @id @default(autoincrement())
+  userId       Int
+  internshipId Int
+  status       ApplicationStatus @default(PENDING)
+  feedback     String?
+  appliedAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  user       Users       @relation(fields: [userId], references: [id])
+  internship Internships @relation(fields: [internshipId], references: [id])
+}
+
+model SavedInternships {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  internshipId Int
+  savedAt      DateTime @default(now())
+
+  user       Users       @relation(fields: [userId], references: [id])
+  internship Internships @relation(fields: [internshipId], references: [id])
+}

@@ -7,6 +7,8 @@ interface payload  {
     name:string
 
 }
+
+//function to generate refresh token(jwt)
 export const generateRefreshToken = (payload:payload)=>{
     if(!REFRESH_TOKEN_SECRET_KEY){
         throw new HTTPError("Refresh token secret key isn't defined",500)
