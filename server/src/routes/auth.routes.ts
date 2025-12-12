@@ -1,10 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
-import { signin, signOut } from "../controllers/auth.controller";
+import { fetchDetails, signin, signOut } from "../controllers/auth.controller";
 import passport from "passport";
 import { HTTPError } from "../types/types";
 import { generateRefreshToken } from "../utils/auth.utils";
 
 import { NODE, CLIENT_URL } from "../configs/env";
+import { verifyToken } from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
@@ -31,6 +32,7 @@ router.get(
           email: user.email,
           name: user.name,
           role: user.role,
+          profile: user.profileUrl,
         };
 
         const token = generateRefreshToken(payload);
@@ -62,4 +64,11 @@ router.get(
 //route to logout
 router.post("/signout", signOut);
 
+
+/**
+ * ----------------------------------------------------------------------
+ * route to fetch the current logged in user's details
+ * ---------------------------------------------------------------------
+ */
+router.get("/getme", verifyToken, fetchDetails);
 export default router;

@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('STUDENT', 'MENTOR', 'PLACEMENTOFFICER');
+CREATE TYPE "Role" AS ENUM ('STUDENT', 'MENTOR');
 
 -- CreateEnum
 CREATE TYPE "ApplicationStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED', 'COMPLETED');
@@ -12,6 +12,7 @@ CREATE TABLE "Users" (
     "password" TEXT NOT NULL,
     "role" "Role" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "profileUrl" TEXT,
 
     CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
 );
@@ -26,7 +27,6 @@ CREATE TABLE "StudentProfiles" (
     "cgpa" DOUBLE PRECISION,
     "skills" TEXT[],
     "introduction" TEXT,
-    "profileUrl" TEXT,
     "mentorId" INTEGER,
 
     CONSTRAINT "StudentProfiles_pkey" PRIMARY KEY ("id")

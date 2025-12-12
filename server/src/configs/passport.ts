@@ -33,27 +33,20 @@ passport.use(
         if (!email) {
           return done(new HTTPError("Email not found", 404), false);
         }
-
+        console.log(profile.photos?.[0].value);
         // Try to find existing user
-        let user = await prisma.users.findUnique({
+        const user = await prisma.users.findUnique({
           where: { email },
         });
 
-        // // If not found, create a new user
-        // if (!user) {
-        //   user = await prisma.users.create({
-        //     data: {
-        //       googleId: profile.id,
-        //       email,
-        //       name: profile.displayName ?? profile.name?.givenName ?? "Unknown",
-        //       profile:
-        //         profile.photos?.[0].value ??
-        //         "https://example.com/default-avatar.png",
-        //       // any other fields: role, createdAt, etc.
-        //     },
-        //   });
-        // }
-
+        const profileUrl = profile.photos?.[0].value;
+        console.log(user!);
+        if (!user?.profileUrl) {
+          await prisma.users.update({
+            where: { email },
+            data: { profileUrl },
+          });
+        }
         // Success
         return done(null, user!);
       } catch (err) {

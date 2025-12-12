@@ -39,12 +39,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.0.0
- * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
+ * Prisma Client JS version: 7.1.0
+ * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
  */
 Prisma.prismaVersion = {
-  client: "7.0.0",
-  engine: "0c19ccc313cf9911a90d99d2ac2eb0280c76c513"
+  client: "7.1.0",
+  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -191,8 +191,8 @@ exports.Prisma.ModelName = {
  */
 const config = {
   "previewFeatures": [],
-  "clientVersion": "7.0.0",
-  "engineVersion": "0c19ccc313cf9911a90d99d2ac2eb0280c76c513",
+  "clientVersion": "7.1.0",
+  "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
   "activeProvider": "postgresql",
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum Role {\n  STUDENT\n  MENTOR\n}\n\nenum ApplicationStatus {\n  PENDING\n  APPROVED\n  REJECTED\n  COMPLETED\n}\n\nmodel Users {\n  id             Int                @id @default(autoincrement())\n  name           String\n  email          String             @unique\n  password       String\n  role           Role\n  createdAt      DateTime           @default(now())\n  profileUrl     String?\n  studentProfile StudentProfiles?\n  mentorProfile  MentorProfiles?\n  applications   Applications[]\n  saved          SavedInternships[]\n}\n\nmodel StudentProfiles {\n  id           Int      @id @default(autoincrement())\n  userId       Int      @unique\n  resumeUrl    String?\n  rollNo       String?\n  department   String?\n  cgpa         Float?\n  skills       String[]\n  introduction String?\n  mentorId     Int?\n\n  user   Users           @relation(fields: [userId], references: [id])\n  mentor MentorProfiles? @relation(fields: [mentorId], references: [id])\n}\n\nmodel MentorProfiles {\n  id          Int     @id @default(autoincrement())\n  userId      Int     @unique\n  designation String?\n  department  String?\n\n  user    Users             @relation(fields: [userId], references: [id])\n  mentees StudentProfiles[]\n}\n\nmodel Internships {\n  id          Int      @id @default(autoincrement())\n  title       String\n  description String?\n  tags        String[]\n  skills      String[]\n  cutoff      Float?\n  ctc         Float?\n  duration    String?\n  mode        String?\n  createdAt   DateTime @default(now())\n\n  applications Applications[]\n  saved        SavedInternships[]\n}\n\nmodel Applications {\n  id           Int               @id @default(autoincrement())\n  userId       Int\n  internshipId Int\n  status       ApplicationStatus @default(PENDING)\n  feedback     String?\n  appliedAt    DateTime          @default(now())\n  updatedAt    DateTime          @updatedAt\n\n  user       Users       @relation(fields: [userId], references: [id])\n  internship Internships @relation(fields: [internshipId], references: [id])\n}\n\nmodel SavedInternships {\n  id           Int      @id @default(autoincrement())\n  userId       Int\n  internshipId Int\n  savedAt      DateTime @default(now())\n\n  user       Users       @relation(fields: [userId], references: [id])\n  internship Internships @relation(fields: [internshipId], references: [id])\n}\n"
 }
