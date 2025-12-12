@@ -3,8 +3,9 @@ import LandingPage from "../common/LandingPage";
 import Signin from "../auth/Signin";
 import Internships from "../common/Internships";
 import HeaderLayout from "../layouts/HeaderLayout";
+import ProtectedRoute from "./protectedRoute";
 
-// import Signup from "../auth/Signup";
+
 const routes = () => {
   return (
     <Router>
@@ -12,7 +13,7 @@ const routes = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Signin />} />
         <Route element={<HeaderLayout />}>
-          <Route path="/internships" element={<Internships />} />
+          <Route path="/internships" element={<ProtectedRoute allowedRole={["PLACEMENTOFFICER","MENTOR","STUDENT"]} ><Internships /></ProtectedRoute>} />
         </Route>
       </Routes>
     </Router>

@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import React, { createContext, useEffect, useState } from "react";
 interface ThemeProviderProps {
   children: React.ReactNode;
 }
