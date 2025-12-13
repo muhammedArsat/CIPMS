@@ -50,7 +50,8 @@ export type SavedInternships = $Result.DefaultSelection<Prisma.$SavedInternships
 export namespace $Enums {
   export const Role: {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR'
+  MENTOR: 'MENTOR',
+  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
 };
 
 export type Role = (typeof Role)[keyof typeof Role]

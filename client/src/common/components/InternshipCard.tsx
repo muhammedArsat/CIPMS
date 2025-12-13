@@ -6,19 +6,21 @@ const InternshipCard = ({
   duration,
   title,
   ctc,
-  desc,
+  tags,
   location,
+  mode
 }: {
   logo: ReactNode;
   title: string;
   companyName: string;
-  desc: string[];
+  tags: string[];
   duration: string;
   location: string;
   ctc: string;
+  mode:string
 }) => {
   return (
-    <div className="bg-white rounded-lg hidden md:flex  flex-col  space-y-4 shadow-lg p-4 md:top-0   absolute md:right-5 min-w-[300px] ">
+    <div className="bg-white dark:bg-secondary rounded-lg hidden md:flex  flex-col  space-y-4 shadow-lg p-4  max-w-sm ">
       <span className="flex justify-between">
         <span className="border border-darkSecondary flex justify-center items-center rounded-full p-1">
           {logo}
@@ -33,14 +35,14 @@ const InternshipCard = ({
       </span>
       <span className="flex flex-col">
         <h3>{title}</h3>
-        <div className="grid grid-cols-3 space-x-3">
-          {desc.map((data, idx) => {
-            return <span key={idx} className="text-[.8rem] font-normal flex justify-center items-center rounded-sm bg-neutral-200">{data}</span>;
+        <div className="grid grid-cols-3 gap-3">
+          {tags.map((data, idx) => {
+            return <span key={idx} className="text-[.8rem] font-normal flex justify-center items-center rounded-sm bg-neutral-200 dark:bg-neutral-800">{data}</span>;
           })}
         </div>
       </span>
 
-      <div className="flex justify-between items-center border-t pt-1 border-darkSecondary dark:border-secondary ">
+      <div className="flex justify-between items-center border-t pt-1 border-darkSecondary dark:border-neutral-500 ">
         <span className="flex items-center space-x-2">
           <h4 className="font-semibold">{ctc}</h4>
           <h4 className="font-light text-secondary">{location}</h4>

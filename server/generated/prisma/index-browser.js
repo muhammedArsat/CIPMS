@@ -195,7 +195,8 @@ exports.Prisma.NullsOrder = {
 };
 exports.Role = exports.$Enums.Role = {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR'
+  MENTOR: 'MENTOR',
+  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
 };
 
 exports.ApplicationStatus = exports.$Enums.ApplicationStatus = {

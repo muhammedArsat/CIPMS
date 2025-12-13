@@ -4,10 +4,17 @@ import Avatar from "../assets/avatar.svg";
 import Logo from "../assets/Logo";
 import Sidebar from "./Sidebar";
 import { ThemeContext } from "../hooks/ThemeContext";
+import { AuthContext } from "../hooks/AuthContext";
+import { useLocation, useNavigate } from "react-router";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { isDark, toggleTheme } = useContext(ThemeContext);
+  const {auth} = useContext(AuthContext);
+  const location = useLocation();
+  const pathName = location.pathname;
+  const isNotification = pathName === "/notification"
+  const navigate = useNavigate();
   return (
     <header className="flex justify-between py-2 md:px-2 mb-2 mx-3 border-b border-neutral-300 dark:border-secondary items-center">
       <Logo />
@@ -32,10 +39,10 @@ const Header = () => {
             <Sun strokeWidth={1} className="cursor-pointer" />
           )}
         </span>
-        <span>
-          <Bell strokeWidth={1} className="cursor-pointer" />
+        <span onClick={()=>navigate("/notification")}>
+          <Bell strokeWidth={1} className={`cursor-pointer ${isNotification ? "fill-black dark:fill-white":"fill-none"} fill-black`}  />
         </span>
-        <img src={Avatar} alt="Profile" className="w-7 h-7" />
+        <img src={auth.profile}  referrerPolicy="no-referrer" alt="Profile" className="w-8 h-8 rounded-full" />
       </div>
     </header>
   );

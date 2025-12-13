@@ -40,7 +40,7 @@ passport.use(
         });
 
         const profileUrl = profile.photos?.[0].value;
-        console.log(user!);
+
         if (!user?.profileUrl) {
           await prisma.users.update({
             where: { email },
