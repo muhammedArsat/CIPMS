@@ -3,7 +3,7 @@ import {
   verifyPlacementOfficer,
   verifyToken,
 } from "../middlewares/auth.middleware";
-import { createAnInternship } from "../controllers/internships.controller";
+import { createAnInternship, fetchAllInternships } from "../controllers/internships.controller";
 const router = express.Router();
 
 router.post(
@@ -12,4 +12,6 @@ router.post(
   verifyPlacementOfficer,
   createAnInternship
 );
+
+router.get("/",verifyToken,fetchAllInternships);
 export default router;

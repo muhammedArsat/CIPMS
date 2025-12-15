@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HTTPError } from "../types/types";
+import { HTTPError } from "../types/custom.types";
 
 //Global Error handling middleware function
 const errorMiddleware = (

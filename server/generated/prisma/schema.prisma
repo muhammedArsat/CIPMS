@@ -66,17 +66,20 @@ model MentorProfiles {
 }
 
 model Internships {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  tags        String[]
-  skills      String[]
-  cutoff      Float?
-  ctc         Float?
-  duration    String?
-  mode        String?
-  createdAt   DateTime @default(now())
-
+  id           Int                @id @default(autoincrement())
+  title        String
+  description  String?
+  tags         String[]
+  skills       String[]
+  cutoff       Float?
+  ctc          Float?
+  duration     String?
+  mode         String?
+  createdAt    DateTime           @default(now())
+  logoUrl      String?
+  companyName  String?
+  location     String?
+  companyUrl   String?
   applications Applications[]
   saved        SavedInternships[]
 }

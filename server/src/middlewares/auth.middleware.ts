@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HTTPError } from "../types/types";
+import { HTTPError, User } from "../types/custom.types";
 import jwt from "jsonwebtoken";
 import { REFRESH_TOKEN_SECRET_KEY } from "../configs/env";
 
@@ -22,8 +22,10 @@ export const verifyToken = async (
     if (!REFRESH_TOKEN_SECRET_KEY) {
       throw new HTTPError("Secret Key is Missing", 500);
     }
-    const decode = jwt.verify(token, REFRESH_TOKEN_SECRET_KEY);
+    const decode = jwt.verify(token, REFRESH_TOKEN_SECRET_KEY) as User;
+   
     req.user = decode;
+   
     next();
   } catch (err) {
     next(err);
@@ -42,7 +44,7 @@ export const verifyStudent = async (
   next: NextFunction
 ) => {
   try {
-    const role = req.user;
+    const role = req.user?.role;
     if (role !== "STUDENT") {
       throw new HTTPError("You are unauthorized", 401);
     }
@@ -64,7 +66,7 @@ export const verifyMentor = async (
   next: NextFunction
 ) => {
   try {
-    const role = req.user;
+    const role = req.user?.role;
     if (role !== "MENTOR") {
       throw new HTTPError("You are unauthorized", 401);
     }
@@ -86,8 +88,7 @@ export const verifyPlacementOfficer = async (
   next: NextFunction
 ) => {
   try {
-    const role = req.user;
-    if (role !== "PLACEMENTOFFICER") {
+    if (req.user?.role !== "PLACEMENTOFFICER") {
       throw new HTTPError("You are unauthorized", 401);
     }
     next();

@@ -16,7 +16,7 @@ const Header = () => {
   const isNotification = pathName === "/notification"
   const navigate = useNavigate();
   return (
-    <header className="flex justify-between py-2 md:px-2 mb-2 mx-3 border-b border-neutral-300 dark:border-secondary items-center">
+    <header className="flex z-50 bg-white dark:bg-[#1f1f1f] justify-between py-2 md:px-2 mb-2 mx-3 border-b border-neutral-300 dark:border-secondary items-center">
       <Logo />
       {/* Hamburger for mobile */}
       <span
@@ -27,7 +27,7 @@ const Header = () => {
         <Menu size={28} />
       </span>
       {/* Sidebar for mobile */}
-      <div className="fixed left-0 top-[4.1rem]  min-h-svh ">
+      <div className="fixed left-0 top-[4.1rem] z-40 min-h-svh ">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </div>
       {/* Other header content for desktop */}
@@ -36,7 +36,7 @@ const Header = () => {
           {!isDark ? (
             <Moon strokeWidth={1} className="cursor-pointer" />
           ) : (
-            <Sun strokeWidth={1} className="cursor-pointer" />
+            <Sun strokeWidth={0.5} className="cursor-pointer" />
           )}
         </span>
         <span onClick={()=>navigate("/notification")}>

@@ -95,17 +95,18 @@ const Sidebar = ({
 
     // PLACEMENTOFFICER order
     {
-      label: "Dashboard",
-      path: "dashboard",
-      icon: <LayoutDashboard size={18} className="mr-2" />,
-      roles: ["PLACEMENTOFFICER"],
-    },
-    {
       label: "Internships",
       path: "internships",
       icon: <Briefcase size={18} className="mr-2" />,
       roles: ["PLACEMENTOFFICER"],
     },
+    {
+      label: "Dashboard",
+      path: "dashboard",
+      icon: <LayoutDashboard size={18} className="mr-2" />,
+      roles: ["PLACEMENTOFFICER"],
+    },
+
     {
       label: "Students",
       path: "students",
@@ -137,7 +138,7 @@ const Sidebar = ({
         onClick={onClose}
       />
       <div
-        className={`fixed flex-col z-50 justify-between items-center top-16 left-0 min-h-screen w-[220px] dark:bg-[#1f1f1f] shadow-xl  transition-transform duration-300
+        className={`fixed flex-col z-50 justify-between items-center top-16 left-0 min-h-screen w-[220px] bg-white dark:bg-[#1f1f1f] shadow-xl  transition-transform duration-300
           ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } md:static md:translate-x-0 md:flex`}

@@ -159,7 +159,11 @@ exports.Prisma.InternshipsScalarFieldEnum = {
   ctc: 'ctc',
   duration: 'duration',
   mode: 'mode',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  logoUrl: 'logoUrl',
+  companyName: 'companyName',
+  location: 'location',
+  companyUrl: 'companyUrl'
 };
 
 exports.Prisma.ApplicationsScalarFieldEnum = {
