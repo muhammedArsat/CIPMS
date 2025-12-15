@@ -3,7 +3,10 @@ import {prisma} from "../configs/prisma";
 import {HTTPError} from "../types/types";
 
 /**
- * GET student profile
+ * ------------------
+ * @desc Get logged-in student profile
+ *  @route GET /api/v1/students/profile
+ *  @access private
  */
 export const getProfile = async(req:Request,res:Response,next:NextFunction)=>{
     try{
