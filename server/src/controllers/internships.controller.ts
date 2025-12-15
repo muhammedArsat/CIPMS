@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { prisma } from "../configs/prisma";
 import { getCompanyDomain } from "../utils/internship.utils";
-import { title } from "process";
+import { nextTick, title } from "process";
+import { HTTPError } from "../types/custom.types";
 
 /**
  * @description function to create a new internship by placement officer
@@ -99,6 +100,73 @@ export const fetchAllInternships = async (
       page,
       limit,
       totalPages: Math.ceil(total / limit),
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * @description function to get particular internship's details
+ * @path /api/v1/internships/detail (GET)
+ * @body id;
+ * @access STUDENT, MENTOR, PLACEMENTOFFICER
+ */
+export const fetchInternship = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.body;
+
+    const internship = await prisma.internships.findUnique({
+      where: { id },
+    });
+
+    if (!internship) {
+      throw new HTTPError("Internship is not found", 404);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Internship detail fetched successfully",
+      internship,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * @description function to delete a particular internship
+ * @path /api/v1/internships (DELETE)
+ * @body id
+ * @access PLACEMENTOFFICER
+ */
+
+export const deleteInternship = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.body;
+
+    if(!id){
+      throw new HTTPError("Id is missing", 404);
+    }
+    const internship = await prisma.internships.delete({
+      where: { id },
+    });
+
+    if (!internship) {
+      throw new HTTPError("Internship is not found", 404);
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Internship deleted successfully",
+      internship,
     });
   } catch (err) {
     next(err);
