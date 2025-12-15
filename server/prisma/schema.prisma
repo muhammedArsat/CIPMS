@@ -16,6 +16,7 @@ datasource db {
 enum Role{
     STUDENT
     MENTOR
+    PLACEMENTOFFICER
 }
 enum ApplicationStatus{
     PENDING
@@ -70,7 +71,10 @@ model Internships{
     duration      String?
     mode          String?
     createdAt     DateTime @default(now())
-
+    logoUrl     String?
+    companyName String?
+    location String?
+    companyUrl String?
     applications Applications[]
     saved        SavedInternships[]
 }

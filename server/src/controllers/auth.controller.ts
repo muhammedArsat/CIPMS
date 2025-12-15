@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { prisma } from "../configs/prisma";
-import { HTTPError } from "../types/types";
+import { HTTPError } from "../types/custom.types";
 import bcrypt from "bcrypt";
 import { generateRefreshToken } from "../utils/auth.utils";
 import { NODE } from "../configs/env";

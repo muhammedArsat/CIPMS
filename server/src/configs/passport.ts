@@ -7,7 +7,7 @@ import {
 } from "./env";
 
 import { prisma } from "../configs/prisma";
-import { HTTPError } from "../types/types";
+import { HTTPError } from "../types/custom.types";
 
 //function is used to serialize the user payload
 passport.serializeUser((user, done) => {
@@ -33,14 +33,14 @@ passport.use(
         if (!email) {
           return done(new HTTPError("Email not found", 404), false);
         }
-        console.log(profile.photos?.[0].value);
+
         // Try to find existing user
         const user = await prisma.users.findUnique({
           where: { email },
         });
 
         const profileUrl = profile.photos?.[0].value;
-        console.log(user!);
+
         if (!user?.profileUrl) {
           await prisma.users.update({
             where: { email },

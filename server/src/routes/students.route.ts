@@ -1,18 +1,19 @@
 import express from "express"
-import { verifyToken } from "../middlewares/auth.middleware"
-import { getProfile } from "../controllers/students.controller"
+import { verifyStudent, verifyToken } from "../middlewares/auth.middleware"
+import { getProfile,createProfile,updateProfile } from "../controllers/students.controller"
 
 const route=express.Router()
 
 // Retrieve
-route.get("/profile",verifyToken,getProfile)
-route.get("/applications")
-route.get("/saved")
-route.get("/recommendations")
-route.get("/mentor")
+route.get("/profile",verifyToken,verifyStudent,getProfile)
+route.get("/applications",verifyToken,verifyStudent,)
+route.get("/saved",verifyToken,verifyStudent,)
+route.get("/recommendations",verifyToken,verifyStudent,)
+route.get("/mentor",verifyToken,verifyStudent,)
 // Create
-route.post("/profile")
+route.post("/profile",verifyToken,verifyStudent,createProfile)
 // Update
-route.put("/profile")
-
+route.put("/profile",verifyToken,verifyStudent,updateProfile)
+//Delete
+route.delete("deleteSaved",verifyToken,verifyStudent)
 export default route

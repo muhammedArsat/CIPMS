@@ -159,7 +159,11 @@ exports.Prisma.InternshipsScalarFieldEnum = {
   ctc: 'ctc',
   duration: 'duration',
   mode: 'mode',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  logoUrl: 'logoUrl',
+  companyName: 'companyName',
+  location: 'location',
+  companyUrl: 'companyUrl'
 };
 
 exports.Prisma.ApplicationsScalarFieldEnum = {
@@ -195,7 +199,8 @@ exports.Prisma.NullsOrder = {
 };
 exports.Role = exports.$Enums.Role = {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR'
+  MENTOR: 'MENTOR',
+  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
 };
 
 exports.ApplicationStatus = exports.$Enums.ApplicationStatus = {

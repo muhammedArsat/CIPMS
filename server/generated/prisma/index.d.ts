@@ -50,7 +50,8 @@ export type SavedInternships = $Result.DefaultSelection<Prisma.$SavedInternships
 export namespace $Enums {
   export const Role: {
   STUDENT: 'STUDENT',
-  MENTOR: 'MENTOR'
+  MENTOR: 'MENTOR',
+  PLACEMENTOFFICER: 'PLACEMENTOFFICER'
 };
 
 export type Role = (typeof Role)[keyof typeof Role]
@@ -4987,6 +4988,10 @@ export namespace Prisma {
     duration: string | null
     mode: string | null
     createdAt: Date | null
+    logoUrl: string | null
+    companyName: string | null
+    location: string | null
+    companyUrl: string | null
   }
 
   export type InternshipsMaxAggregateOutputType = {
@@ -4998,6 +5003,10 @@ export namespace Prisma {
     duration: string | null
     mode: string | null
     createdAt: Date | null
+    logoUrl: string | null
+    companyName: string | null
+    location: string | null
+    companyUrl: string | null
   }
 
   export type InternshipsCountAggregateOutputType = {
@@ -5011,6 +5020,10 @@ export namespace Prisma {
     duration: number
     mode: number
     createdAt: number
+    logoUrl: number
+    companyName: number
+    location: number
+    companyUrl: number
     _all: number
   }
 
@@ -5036,6 +5049,10 @@ export namespace Prisma {
     duration?: true
     mode?: true
     createdAt?: true
+    logoUrl?: true
+    companyName?: true
+    location?: true
+    companyUrl?: true
   }
 
   export type InternshipsMaxAggregateInputType = {
@@ -5047,6 +5064,10 @@ export namespace Prisma {
     duration?: true
     mode?: true
     createdAt?: true
+    logoUrl?: true
+    companyName?: true
+    location?: true
+    companyUrl?: true
   }
 
   export type InternshipsCountAggregateInputType = {
@@ -5060,6 +5081,10 @@ export namespace Prisma {
     duration?: true
     mode?: true
     createdAt?: true
+    logoUrl?: true
+    companyName?: true
+    location?: true
+    companyUrl?: true
     _all?: true
   }
 
@@ -5160,6 +5185,10 @@ export namespace Prisma {
     duration: string | null
     mode: string | null
     createdAt: Date
+    logoUrl: string | null
+    companyName: string | null
+    location: string | null
+    companyUrl: string | null
     _count: InternshipsCountAggregateOutputType | null
     _avg: InternshipsAvgAggregateOutputType | null
     _sum: InternshipsSumAggregateOutputType | null
@@ -5192,6 +5221,10 @@ export namespace Prisma {
     duration?: boolean
     mode?: boolean
     createdAt?: boolean
+    logoUrl?: boolean
+    companyName?: boolean
+    location?: boolean
+    companyUrl?: boolean
     applications?: boolean | Internships$applicationsArgs<ExtArgs>
     saved?: boolean | Internships$savedArgs<ExtArgs>
     _count?: boolean | InternshipsCountOutputTypeDefaultArgs<ExtArgs>
@@ -5208,6 +5241,10 @@ export namespace Prisma {
     duration?: boolean
     mode?: boolean
     createdAt?: boolean
+    logoUrl?: boolean
+    companyName?: boolean
+    location?: boolean
+    companyUrl?: boolean
   }, ExtArgs["result"]["internships"]>
 
   export type InternshipsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5221,6 +5258,10 @@ export namespace Prisma {
     duration?: boolean
     mode?: boolean
     createdAt?: boolean
+    logoUrl?: boolean
+    companyName?: boolean
+    location?: boolean
+    companyUrl?: boolean
   }, ExtArgs["result"]["internships"]>
 
   export type InternshipsSelectScalar = {
@@ -5234,9 +5275,13 @@ export namespace Prisma {
     duration?: boolean
     mode?: boolean
     createdAt?: boolean
+    logoUrl?: boolean
+    companyName?: boolean
+    location?: boolean
+    companyUrl?: boolean
   }
 
-  export type InternshipsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "tags" | "skills" | "cutoff" | "ctc" | "duration" | "mode" | "createdAt", ExtArgs["result"]["internships"]>
+  export type InternshipsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "tags" | "skills" | "cutoff" | "ctc" | "duration" | "mode" | "createdAt" | "logoUrl" | "companyName" | "location" | "companyUrl", ExtArgs["result"]["internships"]>
   export type InternshipsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     applications?: boolean | Internships$applicationsArgs<ExtArgs>
     saved?: boolean | Internships$savedArgs<ExtArgs>
@@ -5262,6 +5307,10 @@ export namespace Prisma {
       duration: string | null
       mode: string | null
       createdAt: Date
+      logoUrl: string | null
+      companyName: string | null
+      location: string | null
+      companyUrl: string | null
     }, ExtArgs["result"]["internships"]>
     composites: {}
   }
@@ -5697,6 +5746,10 @@ export namespace Prisma {
     readonly duration: FieldRef<"Internships", 'String'>
     readonly mode: FieldRef<"Internships", 'String'>
     readonly createdAt: FieldRef<"Internships", 'DateTime'>
+    readonly logoUrl: FieldRef<"Internships", 'String'>
+    readonly companyName: FieldRef<"Internships", 'String'>
+    readonly location: FieldRef<"Internships", 'String'>
+    readonly companyUrl: FieldRef<"Internships", 'String'>
   }
     
 
@@ -8442,7 +8495,11 @@ export namespace Prisma {
     ctc: 'ctc',
     duration: 'duration',
     mode: 'mode',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    logoUrl: 'logoUrl',
+    companyName: 'companyName',
+    location: 'location',
+    companyUrl: 'companyUrl'
   };
 
   export type InternshipsScalarFieldEnum = (typeof InternshipsScalarFieldEnum)[keyof typeof InternshipsScalarFieldEnum]
@@ -8812,6 +8869,10 @@ export namespace Prisma {
     duration?: StringNullableFilter<"Internships"> | string | null
     mode?: StringNullableFilter<"Internships"> | string | null
     createdAt?: DateTimeFilter<"Internships"> | Date | string
+    logoUrl?: StringNullableFilter<"Internships"> | string | null
+    companyName?: StringNullableFilter<"Internships"> | string | null
+    location?: StringNullableFilter<"Internships"> | string | null
+    companyUrl?: StringNullableFilter<"Internships"> | string | null
     applications?: ApplicationsListRelationFilter
     saved?: SavedInternshipsListRelationFilter
   }
@@ -8827,6 +8888,10 @@ export namespace Prisma {
     duration?: SortOrderInput | SortOrder
     mode?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    companyName?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    companyUrl?: SortOrderInput | SortOrder
     applications?: ApplicationsOrderByRelationAggregateInput
     saved?: SavedInternshipsOrderByRelationAggregateInput
   }
@@ -8845,6 +8910,10 @@ export namespace Prisma {
     duration?: StringNullableFilter<"Internships"> | string | null
     mode?: StringNullableFilter<"Internships"> | string | null
     createdAt?: DateTimeFilter<"Internships"> | Date | string
+    logoUrl?: StringNullableFilter<"Internships"> | string | null
+    companyName?: StringNullableFilter<"Internships"> | string | null
+    location?: StringNullableFilter<"Internships"> | string | null
+    companyUrl?: StringNullableFilter<"Internships"> | string | null
     applications?: ApplicationsListRelationFilter
     saved?: SavedInternshipsListRelationFilter
   }, "id">
@@ -8860,6 +8929,10 @@ export namespace Prisma {
     duration?: SortOrderInput | SortOrder
     mode?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    companyName?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    companyUrl?: SortOrderInput | SortOrder
     _count?: InternshipsCountOrderByAggregateInput
     _avg?: InternshipsAvgOrderByAggregateInput
     _max?: InternshipsMaxOrderByAggregateInput
@@ -8881,6 +8954,10 @@ export namespace Prisma {
     duration?: StringNullableWithAggregatesFilter<"Internships"> | string | null
     mode?: StringNullableWithAggregatesFilter<"Internships"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Internships"> | Date | string
+    logoUrl?: StringNullableWithAggregatesFilter<"Internships"> | string | null
+    companyName?: StringNullableWithAggregatesFilter<"Internships"> | string | null
+    location?: StringNullableWithAggregatesFilter<"Internships"> | string | null
+    companyUrl?: StringNullableWithAggregatesFilter<"Internships"> | string | null
   }
 
   export type ApplicationsWhereInput = {
@@ -9229,6 +9306,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     applications?: ApplicationsCreateNestedManyWithoutInternshipInput
     saved?: SavedInternshipsCreateNestedManyWithoutInternshipInput
   }
@@ -9244,6 +9325,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     applications?: ApplicationsUncheckedCreateNestedManyWithoutInternshipInput
     saved?: SavedInternshipsUncheckedCreateNestedManyWithoutInternshipInput
   }
@@ -9258,6 +9343,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationsUpdateManyWithoutInternshipNestedInput
     saved?: SavedInternshipsUpdateManyWithoutInternshipNestedInput
   }
@@ -9273,6 +9362,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationsUncheckedUpdateManyWithoutInternshipNestedInput
     saved?: SavedInternshipsUncheckedUpdateManyWithoutInternshipNestedInput
   }
@@ -9288,6 +9381,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
   }
 
   export type InternshipsUpdateManyMutationInput = {
@@ -9300,6 +9397,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InternshipsUncheckedUpdateManyInput = {
@@ -9313,6 +9414,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ApplicationsCreateInput = {
@@ -9799,6 +9904,10 @@ export namespace Prisma {
     duration?: SortOrder
     mode?: SortOrder
     createdAt?: SortOrder
+    logoUrl?: SortOrder
+    companyName?: SortOrder
+    location?: SortOrder
+    companyUrl?: SortOrder
   }
 
   export type InternshipsAvgOrderByAggregateInput = {
@@ -9816,6 +9925,10 @@ export namespace Prisma {
     duration?: SortOrder
     mode?: SortOrder
     createdAt?: SortOrder
+    logoUrl?: SortOrder
+    companyName?: SortOrder
+    location?: SortOrder
+    companyUrl?: SortOrder
   }
 
   export type InternshipsMinOrderByAggregateInput = {
@@ -9827,6 +9940,10 @@ export namespace Prisma {
     duration?: SortOrder
     mode?: SortOrder
     createdAt?: SortOrder
+    logoUrl?: SortOrder
+    companyName?: SortOrder
+    location?: SortOrder
+    companyUrl?: SortOrder
   }
 
   export type InternshipsSumOrderByAggregateInput = {
@@ -11149,6 +11266,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     saved?: SavedInternshipsCreateNestedManyWithoutInternshipInput
   }
 
@@ -11163,6 +11284,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     saved?: SavedInternshipsUncheckedCreateNestedManyWithoutInternshipInput
   }
 
@@ -11228,6 +11353,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     saved?: SavedInternshipsUpdateManyWithoutInternshipNestedInput
   }
 
@@ -11242,6 +11371,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     saved?: SavedInternshipsUncheckedUpdateManyWithoutInternshipNestedInput
   }
 
@@ -11285,6 +11418,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     applications?: ApplicationsCreateNestedManyWithoutInternshipInput
   }
 
@@ -11299,6 +11436,10 @@ export namespace Prisma {
     duration?: string | null
     mode?: string | null
     createdAt?: Date | string
+    logoUrl?: string | null
+    companyName?: string | null
+    location?: string | null
+    companyUrl?: string | null
     applications?: ApplicationsUncheckedCreateNestedManyWithoutInternshipInput
   }
 
@@ -11364,6 +11505,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationsUpdateManyWithoutInternshipNestedInput
   }
 
@@ -11378,6 +11523,10 @@ export namespace Prisma {
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    companyUrl?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationsUncheckedUpdateManyWithoutInternshipNestedInput
   }
 

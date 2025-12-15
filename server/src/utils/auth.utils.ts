@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { REFRESH_TOKEN_SECRET_KEY } from "../configs/env";
-import { HTTPError } from "../types/types";
+import { HTTPError } from "../types/custom.types";
 interface payload {
   email: string;
   role: string;

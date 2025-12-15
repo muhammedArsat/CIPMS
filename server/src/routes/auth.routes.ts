@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { fetchDetails, signin, signOut } from "../controllers/auth.controller";
 import passport from "passport";
-import { HTTPError } from "../types/types";
+import { HTTPError } from "../types/custom.types";
 import { generateRefreshToken } from "../utils/auth.utils";
 
 import { NODE, CLIENT_URL } from "../configs/env";
@@ -63,7 +63,6 @@ router.get(
 
 //route to logout
 router.post("/signout", signOut);
-
 
 /**
  * ----------------------------------------------------------------------

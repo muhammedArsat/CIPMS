@@ -1,11 +1,7 @@
-import "express"
+import { User } from "./custom.types";
 
-declare module "express"{
-    export interface Request{
-        user?:{
-            id:number;
-            email:string;
-            role:string;
-        }
-    }
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: User;
+  }
 }
