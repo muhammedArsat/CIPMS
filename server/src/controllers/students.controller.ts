@@ -165,3 +165,40 @@ export const getSavedInternships = async (
         next(err)
     }
 };
+/**
+ * -----------------------------------------------------------
+ * @desc Get assigned mentor
+ * @route GET /student/mentor
+ * -----------------------------------------------------------
+ */
+export const getMentor= async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    try{
+       const userId=req.user?.id;
+       const student=await prisma.studentProfiles.findUnique({
+        where:{userId},
+        include:{
+            mentor:{
+                include:{
+                    user:{
+                        select:{name:true,email:true}
+                    }
+                }
+            }
+        }
+       })
+       if(!student?.mentor){
+        throw new HTTPError("Mentor not assigned",404);
+       }
+       res.status(200).json({
+        success:true,
+        data:student.mentor
+       })
+    }
+    catch(err){
+        next(err)
+    }
+}
