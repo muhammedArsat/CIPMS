@@ -8,6 +8,7 @@ const InternshipCard = ({
   ctc,
   tags,
   location,
+  createdAt,
   mode,
 }: {
   logo: string;
@@ -16,18 +17,44 @@ const InternshipCard = ({
   tags: string[];
   duration: string;
   location: string;
-  ctc: string;
+  createdAt:string
+  ctc: number;
   mode: string;
 }) => {
+
+  // filepath: /home/arsath/CIPMS/client/src/common/components/InternshipCard.tsx
+function formatTimeSince(dateString: string) {
+  const posted = new Date(dateString);
+  const now = new Date();
+  const elapsed = now.getTime() - posted.getTime();
+
+  const units = [
+    { label: "year", ms: 1000 * 60 * 60 * 24 * 365 },
+    { label: "month", ms: 1000 * 60 * 60 * 24 * 30 },
+    { label: "week", ms: 1000 * 60 * 60 * 24 * 7 },
+    { label: "day", ms: 1000 * 60 * 60 * 24 },
+    { label: "hour", ms: 1000 * 60 * 60 },
+    { label: "minute", ms: 1000 * 60 },
+  ];
+
+  for (const unit of units) {
+    const value = Math.floor(elapsed / unit.ms);
+    if (value > 0) {
+      return `${value} ${unit.label}${value > 1 ? "s" : ""} ago`;
+    }
+  }
+  return "just now";
+}
+
   return (
     <div className="w-full md:max-w-sm rounded-lg shadow-lg px-2 py-2  dark:bg-secondary">
       {/* Top section  */}
       <div className="flex justify-between items-center  ">
-        <span className="flex items-center space-x-1">
+        <span className="flex items-center space-x-2">
           <img
-            src={logo}
+            src={`https://img.logokit.com/${logo}?token=pk_fr4c695c8a2bece7a74fb4`}
             alt=""
-            className="w-10 h-10 rounded-full object-cover "
+            className="w-10 h-10 border border-neutral-200 rounded-full object-cover"
           />
           <p>{companyName}</p>
         </span>
@@ -41,7 +68,7 @@ const InternshipCard = ({
         <span className="flex space-x-2 items-center ">
           <p>Posted</p>
           <text className="text-sm font-secondary font-light text-neutral-700 dark:text-neutral-400">
-            1 hour ago
+            {formatTimeSince(createdAt)}
           </text>
         </span>
         <h3 className="">{title}</h3>

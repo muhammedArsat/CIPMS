@@ -8,13 +8,22 @@ import {
   deleteInternship,
   fetchAllInternships,
   fetchInternship,
+  updateInternship,
 } from "../controllers/internships.controller";
 const router = express.Router();
 
 router.post("/", verifyToken, verifyPlacementOfficer, createAnInternship);
 
+/**
+ * @description route to fetch all the internships
+ */
 router.get("/", verifyToken, fetchAllInternships);
+
+/**
+ * @description route to fetch details of a particular internships
+ */
 
 router.get("/detail", verifyToken, fetchInternship);
 router.delete("/", verifyToken, verifyPlacementOfficer, deleteInternship);
+router.put("/", verifyToken, verifyPlacementOfficer, updateInternship);
 export default router;

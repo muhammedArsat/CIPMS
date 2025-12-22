@@ -26,6 +26,7 @@ export const createAnInternship = async (
       mode,
       companyUrl,
       location,
+      companyName,
     } = req.body;
 
     const logoUrl = getCompanyDomain(companyUrl);
@@ -42,6 +43,7 @@ export const createAnInternship = async (
         logoUrl,
         location,
         companyUrl,
+        companyName,
       },
     });
 
@@ -60,7 +62,6 @@ export const createAnInternship = async (
  * @path /api/v1/internships (GET)
  * @access STUDENT, MENTOR, PLACEMENTOFFICER
  */
-
 export const fetchAllInternships = async (
   req: Request,
   res: Response,
@@ -144,7 +145,6 @@ export const fetchInternship = async (
  * @body id
  * @access PLACEMENTOFFICER
  */
-
 export const deleteInternship = async (
   req: Request,
   res: Response,
@@ -153,7 +153,7 @@ export const deleteInternship = async (
   try {
     const { id } = req.body;
 
-    if(!id){
+    if (!id) {
       throw new HTTPError("Id is missing", 404);
     }
     const internship = await prisma.internships.delete({
@@ -166,6 +166,66 @@ export const deleteInternship = async (
     return res.status(200).json({
       success: true,
       message: "Internship deleted successfully",
+      internship,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * @description function to update a particular internship
+ * @path /api/v1/internships (UPDATE)
+ * @body id
+ * @access PLACEMENTOFFICER
+ */
+export const updateInternship = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const {
+      id,
+      title,
+      description,
+      tags,
+      skills,
+      cutoff,
+      ctc,
+      duration,
+      mode,
+      companyUrl,
+      logoUrl,
+      location,
+      companyName,
+    } = req.body;
+
+    if (!id) {
+      throw new HTTPError("Id is missing", 403);
+    }
+
+    const internship = await prisma.internships.update({
+      where: { id },
+      data: {
+        title,
+        description,
+        tags,
+        skills,
+        cutoff,
+        companyName,
+        companyUrl,
+        mode,
+        duration,
+        logoUrl,
+        location,
+        ctc,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Internship updated successfully",
       internship,
     });
   } catch (err) {

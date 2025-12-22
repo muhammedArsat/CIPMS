@@ -5,19 +5,17 @@
 @theme {
   --font-primary: "Inter";
   --font-secondary: "Lexend";
-  --color-action: #3F37C9;
-  --color-hover:#4361EE;
-  --color-active:#3A0CA3;
-  --color-darkSecondary:#e5e5e5;
-  --color-secondary:#202020
-
-
+  --color-action: #3f37c9;
+  --color-hover: #4361ee;
+  --color-active: #3a0ca3;
+  --color-darkSecondary: #e5e5e5;
+  --color-secondary: #202020;
 }
 
-body{
+body {
   transition: 200ms;
 }
-body.dark{
+body.dark {
   background-color: #181818 !important;
   color: white;
   transition: 200ms;
@@ -38,22 +36,38 @@ h4 {
 p {
   @apply text-[1rem] font-secondary font-light tracking-wide;
 }
-span{
-  @apply font-secondary 
+span {
+  @apply font-secondary;
 }
-label{
-  @apply font-secondary font-light text-[1rem]
-}
-
-button{
-  @apply font-secondary text-white cursor-pointer font-light bg-action hover:bg-hover active:bg-active 
+label {
+  @apply font-secondary font-light text-[1rem];
 }
 
-@layer{
-  .input-container{
-    @apply flex flex-col justify-center items-start space-y-2 relative 
+button {
+  @apply font-secondary text-white cursor-pointer font-light bg-action hover:bg-hover active:bg-active;
+}
+
+@layer {
+  .input-container {
+    @apply flex flex-col justify-center items-start space-y-2 relative;
   }
-  .input-base{
-    @apply w-full font-secondary focus:outline-action border border-neutral-200  dark:border-neutral-700 pl-10 py-3 rounded-lg
+  .input-base {
+    @apply w-full font-secondary focus:outline-action border border-neutral-200  dark:border-neutral-700 pl-10 py-3 rounded-lg text-black dark:text-white;
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #3f37c9 94%, #0000) top/8px 8px
+      no-repeat,
+    conic-gradient(#0000 30%, #3f37c9);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
   }
 }
