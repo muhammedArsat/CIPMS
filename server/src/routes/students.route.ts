@@ -1,6 +1,7 @@
 import express from "express"
 import { verifyStudent, verifyToken } from "../middlewares/auth.middleware"
 import { getProfile,createProfile,updateProfile } from "../controllers/students.controller"
+import { uploadResume } from "../middlewares/upload.middleware"
 
 const route=express.Router()
 
@@ -11,7 +12,7 @@ route.get("/saved",verifyToken,verifyStudent,)
 route.get("/recommendations",verifyToken,verifyStudent,)
 route.get("/mentor",verifyToken,verifyStudent,)
 // Create
-route.post("/profile",verifyToken,verifyStudent,createProfile)
+route.post("/profile",verifyToken,verifyStudent,uploadResume.single("resume"),createProfile)
 // Update
 route.put("/profile",verifyToken,verifyStudent,updateProfile)
 //Delete

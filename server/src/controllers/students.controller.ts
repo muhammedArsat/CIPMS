@@ -52,7 +52,6 @@ export const createProfile = async (
             throw new HTTPError('Unauthorized', 401);
         }
         const {
-            resumeUrl,
             rollNo,
             department,
             cgpa,
@@ -60,22 +59,26 @@ export const createProfile = async (
             introduction,
             mentorId,
         } = req.body;
-        const existing = await prisma.studentProfiles.create({
+        const resumeUrl=req.file?.path;
+        if(!resumeUrl){
+            throw new HTTPError("Resume upload required",400);
+        }
+        const newProfile = await prisma.studentProfiles.create({
             data: {
                 userId,
                 resumeUrl,
                 rollNo,
                 department,
-                cgpa,
+                cgpa:Number(cgpa),
                 skills,
                 introduction,
                 mentorId,
             },
         });
         res.status(201).json({
-            sucess: true,
+            success: true,
             message: 'Profile created successfully',
-            data: profile,
+            data: newProfile,
         });
     } catch (err) {
         next(err);
@@ -96,11 +99,11 @@ export const updateProfile = async (
         const userId = req.user?.id;
         if (!userId) {
             throw new HTTPError('Unauthorized', 401);
-            const updateProfile = await prisma.studentProfiles.update({
-                where: { userId },
-                data: req.body,
-            });
         }
+        const updateProfile = await prisma.studentProfiles.update({
+            where: { userId },
+            data: req.body,
+        });
         res.status(200).json({
             success: true,
             message: 'Profile updated successfully',
@@ -158,7 +161,7 @@ export const getSavedInternships = async (
             }
         })
         res.status(200).json({
-            sucess:true,
+            success:true,
             data:saved
         })
     } catch (err) {
