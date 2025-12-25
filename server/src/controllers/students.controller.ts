@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { prisma } from '../configs/prisma';
 import { HTTPError } from '../types/custom.types';
 import { profile } from 'console';
+import cloudinary from '../configs/cloudinary';
 
 /**
  * ------------------
@@ -52,7 +53,6 @@ export const createProfile = async (
             throw new HTTPError('Unauthorized', 401);
         }
         const {
-            resumeUrl,
             rollNo,
             department,
             cgpa,
@@ -60,22 +60,28 @@ export const createProfile = async (
             introduction,
             mentorId,
         } = req.body;
-        const existing = await prisma.studentProfiles.create({
+        const resumeUrl = req.file?.path;
+        const resumePublicId = req.file?.filename;
+        if(!resumeUrl){
+            throw new HTTPError("Resume upload required",400);
+        }
+        const newProfile = await prisma.studentProfiles.create({
             data: {
                 userId,
                 resumeUrl,
+                resumePublicId,
                 rollNo,
                 department,
-                cgpa,
+                cgpa:Number(cgpa),
                 skills,
                 introduction,
                 mentorId,
             },
         });
         res.status(201).json({
-            sucess: true,
+            success: true,
             message: 'Profile created successfully',
-            data: profile,
+            data: newProfile,
         });
     } catch (err) {
         next(err);
@@ -83,7 +89,7 @@ export const createProfile = async (
 };
 /**
  * -----------------------------------------------------------
- * @desc Update student profile
+ * @desc Update student profile, update resume
  * @route PUT /student/profile
  * -----------------------------------------------------------
  */
@@ -96,11 +102,32 @@ export const updateProfile = async (
         const userId = req.user?.id;
         if (!userId) {
             throw new HTTPError('Unauthorized', 401);
-            const updateProfile = await prisma.studentProfiles.update({
-                where: { userId },
-                data: req.body,
-            });
         }
+        const existingProfile=await prisma.studentProfiles.findUnique({
+            where:{userId},
+        })
+        if(!existingProfile){
+            throw new HTTPError("Profile not found",404);
+        }
+        // if new resume uploaded -> delete old resume
+        if(req.file && existingProfile.resumePublicId){
+            await cloudinary.uploader.destroy(
+                existingProfile.resumePublicId,
+                {
+                    resource_type:"raw"
+                }
+            )
+        }
+        // update profile
+        const updateProfile = await prisma.studentProfiles.update({
+            where: { userId },
+            data:{
+                 ...req.body,
+                 resumeUrl:req.file?.path?? existingProfile.resumeUrl,
+                 resumePublicId:
+                 req.file?.filename?? existingProfile.resumePublicId
+                }
+        });
         res.status(200).json({
             success: true,
             message: 'Profile updated successfully',
@@ -132,6 +159,11 @@ export const getApplications = async (
                 appliedAt: 'desc',
             },
         });
+           return res.status(200).json({
+            success: true,
+            message: 'Get applications successfull',
+            applications
+        });
     } catch (err) {
         next(err);
     }
@@ -158,13 +190,47 @@ export const getSavedInternships = async (
             }
         })
         res.status(200).json({
-            sucess:true,
+            success:true,
+            message: 'Get Saved Internship is successfull',
             data:saved
         })
     } catch (err) {
         next(err)
     }
 };
+/**
+ * @desc Get recommendation of internships
+ * @route GET /student/recommendations
+ */
+export const getRecommendations=async (req:Request,res:Response,next:NextFunction)=>{
+    try{
+        const userId=req.user!.id;
+        const existingProfile=await prisma.studentProfiles.findUnique({
+            where:{userId}
+        })
+        if(!existingProfile){
+            return res.status(404).json({
+                message:"Complete profile first"
+            })
+        }
+        const recommendations=await prisma.internships.findMany({
+            where:{
+                skills:{
+                    hasSome:existingProfile.skills
+                }
+            },
+            take:10
+        })
+        return res.status(200).json({
+             success: true,
+             message: 'get recommendation is successfull',
+             recommendations
+        })
+    }
+    catch(err){
+        next(err)
+    }
+}
 /**
  * -----------------------------------------------------------
  * @desc Get assigned mentor
@@ -195,6 +261,7 @@ export const getMentor= async(
        }
        res.status(200).json({
         success:true,
+        message: 'Get mentor is successfull',
         data:student.mentor
        })
     }
