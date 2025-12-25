@@ -134,6 +134,7 @@ exports.Prisma.StudentProfilesScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   resumeUrl: 'resumeUrl',
+  resumePublicId: 'resumePublicId',
   rollNo: 'rollNo',
   department: 'department',
   cgpa: 'cgpa',

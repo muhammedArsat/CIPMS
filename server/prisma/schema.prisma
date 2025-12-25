@@ -40,7 +40,8 @@ model Users{
 model StudentProfiles{
     id           Int     @id   @default(autoincrement())
     userId       Int     @unique
-    resumeUrl    String?
+    resumeUrl   String?
+    resumePublicId String?
     rollNo       String?
     department   String?
     cgpa         Float?
