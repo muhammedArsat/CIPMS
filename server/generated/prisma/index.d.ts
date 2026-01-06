@@ -2693,6 +2693,7 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     resumeUrl: string | null
+    resumePublicId: string | null
     rollNo: string | null
     department: string | null
     cgpa: number | null
@@ -2704,6 +2705,7 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     resumeUrl: string | null
+    resumePublicId: string | null
     rollNo: string | null
     department: string | null
     cgpa: number | null
@@ -2715,6 +2717,7 @@ export namespace Prisma {
     id: number
     userId: number
     resumeUrl: number
+    resumePublicId: number
     rollNo: number
     department: number
     cgpa: number
@@ -2743,6 +2746,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     resumeUrl?: true
+    resumePublicId?: true
     rollNo?: true
     department?: true
     cgpa?: true
@@ -2754,6 +2758,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     resumeUrl?: true
+    resumePublicId?: true
     rollNo?: true
     department?: true
     cgpa?: true
@@ -2765,6 +2770,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     resumeUrl?: true
+    resumePublicId?: true
     rollNo?: true
     department?: true
     cgpa?: true
@@ -2864,6 +2870,7 @@ export namespace Prisma {
     id: number
     userId: number
     resumeUrl: string | null
+    resumePublicId: string | null
     rollNo: string | null
     department: string | null
     cgpa: number | null
@@ -2895,6 +2902,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     resumeUrl?: boolean
+    resumePublicId?: boolean
     rollNo?: boolean
     department?: boolean
     cgpa?: boolean
@@ -2909,6 +2917,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     resumeUrl?: boolean
+    resumePublicId?: boolean
     rollNo?: boolean
     department?: boolean
     cgpa?: boolean
@@ -2923,6 +2932,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     resumeUrl?: boolean
+    resumePublicId?: boolean
     rollNo?: boolean
     department?: boolean
     cgpa?: boolean
@@ -2937,6 +2947,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     resumeUrl?: boolean
+    resumePublicId?: boolean
     rollNo?: boolean
     department?: boolean
     cgpa?: boolean
@@ -2945,7 +2956,7 @@ export namespace Prisma {
     mentorId?: boolean
   }
 
-  export type StudentProfilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "resumeUrl" | "rollNo" | "department" | "cgpa" | "skills" | "introduction" | "mentorId", ExtArgs["result"]["studentProfiles"]>
+  export type StudentProfilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "resumeUrl" | "resumePublicId" | "rollNo" | "department" | "cgpa" | "skills" | "introduction" | "mentorId", ExtArgs["result"]["studentProfiles"]>
   export type StudentProfilesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     mentor?: boolean | StudentProfiles$mentorArgs<ExtArgs>
@@ -2969,6 +2980,7 @@ export namespace Prisma {
       id: number
       userId: number
       resumeUrl: string | null
+      resumePublicId: string | null
       rollNo: string | null
       department: string | null
       cgpa: number | null
@@ -3403,6 +3415,7 @@ export namespace Prisma {
     readonly id: FieldRef<"StudentProfiles", 'Int'>
     readonly userId: FieldRef<"StudentProfiles", 'Int'>
     readonly resumeUrl: FieldRef<"StudentProfiles", 'String'>
+    readonly resumePublicId: FieldRef<"StudentProfiles", 'String'>
     readonly rollNo: FieldRef<"StudentProfiles", 'String'>
     readonly department: FieldRef<"StudentProfiles", 'String'>
     readonly cgpa: FieldRef<"StudentProfiles", 'Float'>
@@ -8464,6 +8477,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     resumeUrl: 'resumeUrl',
+    resumePublicId: 'resumePublicId',
     rollNo: 'rollNo',
     department: 'department',
     cgpa: 'cgpa',
@@ -8727,6 +8741,7 @@ export namespace Prisma {
     id?: IntFilter<"StudentProfiles"> | number
     userId?: IntFilter<"StudentProfiles"> | number
     resumeUrl?: StringNullableFilter<"StudentProfiles"> | string | null
+    resumePublicId?: StringNullableFilter<"StudentProfiles"> | string | null
     rollNo?: StringNullableFilter<"StudentProfiles"> | string | null
     department?: StringNullableFilter<"StudentProfiles"> | string | null
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
@@ -8741,6 +8756,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     resumeUrl?: SortOrderInput | SortOrder
+    resumePublicId?: SortOrderInput | SortOrder
     rollNo?: SortOrderInput | SortOrder
     department?: SortOrderInput | SortOrder
     cgpa?: SortOrderInput | SortOrder
@@ -8758,6 +8774,7 @@ export namespace Prisma {
     OR?: StudentProfilesWhereInput[]
     NOT?: StudentProfilesWhereInput | StudentProfilesWhereInput[]
     resumeUrl?: StringNullableFilter<"StudentProfiles"> | string | null
+    resumePublicId?: StringNullableFilter<"StudentProfiles"> | string | null
     rollNo?: StringNullableFilter<"StudentProfiles"> | string | null
     department?: StringNullableFilter<"StudentProfiles"> | string | null
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
@@ -8772,6 +8789,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     resumeUrl?: SortOrderInput | SortOrder
+    resumePublicId?: SortOrderInput | SortOrder
     rollNo?: SortOrderInput | SortOrder
     department?: SortOrderInput | SortOrder
     cgpa?: SortOrderInput | SortOrder
@@ -8792,6 +8810,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"StudentProfiles"> | number
     userId?: IntWithAggregatesFilter<"StudentProfiles"> | number
     resumeUrl?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
+    resumePublicId?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
     rollNo?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
     department?: StringNullableWithAggregatesFilter<"StudentProfiles"> | string | null
     cgpa?: FloatNullableWithAggregatesFilter<"StudentProfiles"> | number | null
@@ -9170,6 +9189,7 @@ export namespace Prisma {
 
   export type StudentProfilesCreateInput = {
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -9183,6 +9203,7 @@ export namespace Prisma {
     id?: number
     userId: number
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -9193,6 +9214,7 @@ export namespace Prisma {
 
   export type StudentProfilesUpdateInput = {
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -9206,6 +9228,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -9218,6 +9241,7 @@ export namespace Prisma {
     id?: number
     userId: number
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -9228,6 +9252,7 @@ export namespace Prisma {
 
   export type StudentProfilesUpdateManyMutationInput = {
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -9239,6 +9264,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -9776,6 +9802,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     resumeUrl?: SortOrder
+    resumePublicId?: SortOrder
     rollNo?: SortOrder
     department?: SortOrder
     cgpa?: SortOrder
@@ -9795,6 +9822,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     resumeUrl?: SortOrder
+    resumePublicId?: SortOrder
     rollNo?: SortOrder
     department?: SortOrder
     cgpa?: SortOrder
@@ -9806,6 +9834,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     resumeUrl?: SortOrder
+    resumePublicId?: SortOrder
     rollNo?: SortOrder
     department?: SortOrder
     cgpa?: SortOrder
@@ -10709,6 +10738,7 @@ export namespace Prisma {
 
   export type StudentProfilesCreateWithoutUserInput = {
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -10720,6 +10750,7 @@ export namespace Prisma {
   export type StudentProfilesUncheckedCreateWithoutUserInput = {
     id?: number
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -10812,6 +10843,7 @@ export namespace Prisma {
 
   export type StudentProfilesUpdateWithoutUserInput = {
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10823,6 +10855,7 @@ export namespace Prisma {
   export type StudentProfilesUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11050,6 +11083,7 @@ export namespace Prisma {
 
   export type StudentProfilesCreateWithoutMentorInput = {
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -11062,6 +11096,7 @@ export namespace Prisma {
     id?: number
     userId: number
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -11138,6 +11173,7 @@ export namespace Prisma {
     id?: IntFilter<"StudentProfiles"> | number
     userId?: IntFilter<"StudentProfiles"> | number
     resumeUrl?: StringNullableFilter<"StudentProfiles"> | string | null
+    resumePublicId?: StringNullableFilter<"StudentProfiles"> | string | null
     rollNo?: StringNullableFilter<"StudentProfiles"> | string | null
     department?: StringNullableFilter<"StudentProfiles"> | string | null
     cgpa?: FloatNullableFilter<"StudentProfiles"> | number | null
@@ -11592,6 +11628,7 @@ export namespace Prisma {
     id?: number
     userId: number
     resumeUrl?: string | null
+    resumePublicId?: string | null
     rollNo?: string | null
     department?: string | null
     cgpa?: number | null
@@ -11601,6 +11638,7 @@ export namespace Prisma {
 
   export type StudentProfilesUpdateWithoutMentorInput = {
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11613,6 +11651,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11624,6 +11663,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumePublicId?: NullableStringFieldUpdateOperationsInput | string | null
     rollNo?: NullableStringFieldUpdateOperationsInput | string | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     cgpa?: NullableFloatFieldUpdateOperationsInput | number | null

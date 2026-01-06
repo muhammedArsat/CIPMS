@@ -41,15 +41,16 @@ model Users {
 }
 
 model StudentProfiles {
-  id           Int      @id @default(autoincrement())
-  userId       Int      @unique
-  resumeUrl    String?
-  rollNo       String?
-  department   String?
-  cgpa         Float?
-  skills       String[]
-  introduction String?
-  mentorId     Int?
+  id             Int      @id @default(autoincrement())
+  userId         Int      @unique
+  resumeUrl      String?
+  resumePublicId String?
+  rollNo         String?
+  department     String?
+  cgpa           Float?
+  skills         String[]
+  introduction   String?
+  mentorId       Int?
 
   user   Users           @relation(fields: [userId], references: [id])
   mentor MentorProfiles? @relation(fields: [mentorId], references: [id])
