@@ -25,6 +25,9 @@ app.use("/api/v1/auth", AuthRouter);
 //routes for internships
 app.use("/api/v1/internships", InternshipsRouter);
 
+
+//routes for students
+app.use("/api/v1/students",StudentsRouter);
 //routes for saved applications
 // app.use("/api/v1/saved", SavedApplicationsRouter);
 

@@ -73,7 +73,7 @@ model Internships{
     createdAt     DateTime @default(now())
     logoUrl     String?
     companyName String?
-    location String?
+    location String? Fill out the form below to post a new internship opportunity. Make sure to provide accurate details so students can easily find and apply for your position.
     companyUrl String?
     applications Applications[]
     saved        SavedInternships[]
