@@ -6,7 +6,7 @@ const HeaderLayout = () => {
      <div className="fixed top-0 bg-white dark:bg-[#1f1f1f] w-full z-50">
         <Header />
       </div>
-      <main className=" p-1 md:pl-[250px]  mt-20">
+      <main className=" px-4 md:pl-[250px]  mt-20">
         <Outlet />
       </main>
     </div>

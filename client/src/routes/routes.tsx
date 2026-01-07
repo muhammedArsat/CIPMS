@@ -7,6 +7,8 @@ import HeaderLayout from "../layouts/HeaderLayout";
 import ProtectedRoute from "./protectedRoute";
 import Dashboard from "../common/Dashboard";
 import Notification from "../common/components/Notification";
+import NewInternship from "../placementOfficers/pages/NewInternship";
+import InternshipsDetails from "../common/InternshipsDetails";
 
 const routes = () => {
   return (
@@ -35,13 +37,32 @@ const routes = () => {
               </ProtectedRoute>
             }
           />
-           <Route
+          <Route
             path="/notification"
             element={
               <ProtectedRoute
                 allowedRole={["PLACEMENTOFFICER", "MENTOR", "STUDENT"]}
               >
                 <Notification />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/newInternship"
+            element={
+              <ProtectedRoute allowedRole={["PLACEMENTOFFICER"]}>
+                <NewInternship />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/internshipDetails/:id"
+            element={
+              <ProtectedRoute
+                allowedRole={["PLACEMENTOFFICER", "MENTOR", "STUDENT"]}
+              >
+                <InternshipsDetails />
               </ProtectedRoute>
             }
           />

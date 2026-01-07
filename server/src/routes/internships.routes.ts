@@ -23,7 +23,7 @@ router.get("/", verifyToken, fetchAllInternships);
  * @description route to fetch details of a particular internships
  */
 
-router.get("/detail", verifyToken, fetchInternship);
-router.delete("/", verifyToken, verifyPlacementOfficer, deleteInternship);
+router.get("/detail/:id", verifyToken, fetchInternship);
+router.delete("/:id", verifyToken, verifyPlacementOfficer, deleteInternship);
 router.put("/", verifyToken, verifyPlacementOfficer, updateInternship);
 export default router;

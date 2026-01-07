@@ -23,7 +23,7 @@ const InternshipCard = ({
 }) => {
 
   // filepath: /home/arsath/CIPMS/client/src/common/components/InternshipCard.tsx
-function formatTimeSince(dateString: string) {
+ function formatTimeSince(dateString: string) {
   const posted = new Date(dateString);
   const now = new Date();
   const elapsed = now.getTime() - posted.getTime();
@@ -47,7 +47,7 @@ function formatTimeSince(dateString: string) {
 }
 
   return (
-    <div className="w-full md:max-w-sm rounded-lg shadow-lg px-2 py-2  dark:bg-secondary">
+    <div className="w-full md:max-w-sm rounded-lg shadow-lg px-2 py-2 max-h-[250px] overflow-hidden  dark:bg-secondary">
       {/* Top section  */}
       <div className="flex justify-between items-center  ">
         <span className="flex items-center space-x-2">
@@ -71,7 +71,7 @@ function formatTimeSince(dateString: string) {
             {formatTimeSince(createdAt)}
           </text>
         </span>
-        <h3 className="">{title}</h3>
+        <p className="font-semibold">{title}</p>
         <div className="flex items-center space-x-4 mt-1">
           {tags.map((tag, idx) => {
             return (

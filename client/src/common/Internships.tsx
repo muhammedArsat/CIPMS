@@ -5,7 +5,10 @@ import Search from "./components/Search";
 import { Plus } from "lucide-react";
 import toast from "react-hot-toast";
 import Loader from "./components/Loader";
+import { Navigate, useNavigate } from "react-router";
+import Pagination from "./components/Pagination";
 interface internshipType {
+  id: number;
   companyName: string;
   companyUrl: string;
   createdAt: string;
@@ -27,6 +30,9 @@ const Internships = () => {
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
+  const [totalPage, setTotalPage] = useState(0);
+
+  const navigate = useNavigate();
   const fetchInternships = async () => {
     try {
       setIsLoading(true);
@@ -36,6 +42,7 @@ const Internships = () => {
         limit,
       });
       setInternships(res.internships);
+      setTotalPage(res.totalPages);
     } catch (err: any) {
       toast.error(err?.response?.data?.message);
     } finally {
@@ -55,7 +62,7 @@ const Internships = () => {
   useEffect(() => {
     fetchInternships();
     // eslint-disable-next-line
-  }, [debouncedSearch]);
+  }, [debouncedSearch, page]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -67,23 +74,20 @@ const Internships = () => {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col space-y-4">
       <span>
         <h3>Internships</h3>
-        <p>
+        <p className="font-light">
           Kickstart your career with hands-on experience. Explore the latest
           internship opportunities from top companies and apply today!
         </p>
       </span>
       <div className="flex w-full space-x-2 ">
-        <div className="basis-10/12">
+        <div className="basis-12/12">
           <Search value={search} handleSearch={handleSearch} />
         </div>
-        <button className="basis-2/12 rounded-lg flex justify-center items-center space-x-2">
-          <Plus />
-          New Internship
-        </button>
       </div>
 
       <div className="  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
@@ -92,7 +96,11 @@ const Internships = () => {
         ) : (
           internships.map((internship, idx) => {
             return (
-              <div key={idx}>
+              <div
+                key={idx}
+                onClick={() => navigate(`/internshipDetails/${internship.id}`)}
+                className="hover:scale-105 transition-all cursor-pointer"
+              >
                 <InternshipCard
                   createdAt={internship.createdAt}
                   logo={internship.logoUrl}
@@ -108,6 +116,15 @@ const Internships = () => {
             );
           })
         )}
+      </div>
+
+      <div className="md:fixed bottom-5 flex justify-center items-center  w-full  left-0 ">
+        <Pagination
+          page={page}
+          totalPage={totalPage}
+          onPrevious={() => setPage((p) => Math.max(1, p - 1))}
+          onNext={() => setPage((p) => Math.min(totalPage, p + 1))}
+        />
       </div>
     </div>
   );
