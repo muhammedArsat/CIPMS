@@ -103,7 +103,7 @@ const Sidebar = ({
     },
     {
       label: "Dashboard",
-      path: "dashboard",
+      path: "placement/dashboard",
       icon: <LayoutDashboard size={18} className="mr-2" />,
       roles: ["PLACEMENTOFFICER"],
     },

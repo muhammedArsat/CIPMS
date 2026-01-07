@@ -5,6 +5,7 @@ import InternshipsRouter from "./routes/internships.routes";
 import StudentsRouter from "./routes/students.route";
 import MentorRouter from "./routes/mentors.route";
 import SavedApplicationsRouter from "./routes/savedApplications.route";
+import PlacementRouter from './routes/placement.routes'
 import passport from "./configs/passport";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -31,6 +32,7 @@ app.use("/api/v1/students",StudentsRouter);
 //routes for saved applications
 // app.use("/api/v1/saved", SavedApplicationsRouter);
 
+app.use("/api/v1/placement",PlacementRouter)
 //Global error handling middleware
 app.use(errorMiddleware);
 
