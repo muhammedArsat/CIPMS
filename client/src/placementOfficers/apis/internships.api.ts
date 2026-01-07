@@ -11,7 +11,7 @@ interface fetchAllInternshipsProps {
 }
 export const fetchAllInternships = async ({
   search,
-  page,
+  page,    
   limit,
 }: fetchAllInternshipsProps) => {
   const res = await api.get(

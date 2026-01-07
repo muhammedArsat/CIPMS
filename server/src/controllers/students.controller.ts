@@ -48,8 +48,8 @@ export const createProfile = async (
     next: NextFunction
 ) => {
     try {
-        const userId = req.user?.id;
-        if (!userId) {
+        const userEmail = req.user?.email;
+        if (!userEmail) {
             throw new HTTPError('Unauthorized', 401);
         }
         const {
@@ -67,7 +67,7 @@ export const createProfile = async (
         }
         const newProfile = await prisma.studentProfiles.create({
             data: {
-                userId,
+                user:{connect:{email:userEmail}},
                 resumeUrl,
                 resumePublicId,
                 rollNo,
@@ -75,7 +75,7 @@ export const createProfile = async (
                 cgpa:Number(cgpa),
                 skills,
                 introduction,
-                mentorId,
+                // mentor:{connect:{id:1}},
             },
         });
         res.status(201).json({

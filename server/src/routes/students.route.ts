@@ -16,5 +16,5 @@ route.post("/profile",verifyToken,verifyStudent,uploadResume.single("resume"),cr
 // Update
 route.put("/profile",verifyToken,verifyStudent,uploadResume.single("resume"),updateProfile)
 //Delete
-route.delete("deleteSaved",verifyToken,verifyStudent)
+route.delete("/deleteSaved",verifyToken,verifyStudent)
 export default route
