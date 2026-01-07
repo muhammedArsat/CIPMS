@@ -119,10 +119,16 @@ export const fetchInternship = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.body;
-
+    const { id } = req.params ;
+    if(!id){
+      return res.status(400).json({
+        success:false,
+        message:"Id is missing"
+      })
+    }
+    
     const internship = await prisma.internships.findUnique({
-      where: { id },
+      where: { id: Number(id) },
     });
 
     if (!internship) {
@@ -151,13 +157,13 @@ export const deleteInternship = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
 
     if (!id) {
       throw new HTTPError("Id is missing", 404);
     }
     const internship = await prisma.internships.delete({
-      where: { id },
+      where: { id:Number(id) },
     });
 
     if (!internship) {
@@ -206,7 +212,7 @@ export const updateInternship = async (
     }
 
     const internship = await prisma.internships.update({
-      where: { id },
+      where: { id:Number(id) },
       data: {
         title,
         description,

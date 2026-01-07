@@ -34,7 +34,7 @@ h4 {
   @apply text-[.9rem] font-secondary  tracking-wide;
 }
 p {
-  @apply text-[1rem] font-secondary font-light tracking-wide;
+  @apply text-[1rem] font-secondary tracking-wide;
 }
 span {
   @apply font-secondary;
