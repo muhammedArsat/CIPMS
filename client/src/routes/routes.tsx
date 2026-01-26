@@ -9,7 +9,7 @@ import Dashboard from "../common/Dashboard";
 import Notification from "../common/components/Notification";
 import NewInternship from "../placementOfficers/pages/NewInternship";
 import InternshipsDetails from "../common/InternshipsDetails";
-
+import studentTable from "../students/components/studentTable";
 const routes = () => {
   return (
     <Router>
@@ -66,6 +66,7 @@ const routes = () => {
               </ProtectedRoute>
             }
           />
+          
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
